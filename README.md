@@ -1,6 +1,6 @@
-# PortfolioWebsite
+# Ceramic Configurator
 
-New Portfolio Website Project wiith Three.js, React-Three-Fiber, React-Three-Drei und Vite
+Ceramic Configurator with Three.js, React-Three-Fiber, React-Three-Drei und Vite
 
 ## Start
 
