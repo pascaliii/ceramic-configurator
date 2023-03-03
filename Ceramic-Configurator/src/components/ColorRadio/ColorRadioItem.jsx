@@ -17,7 +17,7 @@ const ColorRadioItem = ({
     <div className={classNames}>
       <label>
         <input type='radio' name={name} value={value} checked={isChecked} />
-        <img className='color-box' src={image} alt={alt} />
+        <img className='color-radio__item-image' src={image} alt={alt} />
       </label>
     </div>
   )
