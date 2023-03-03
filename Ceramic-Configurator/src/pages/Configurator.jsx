@@ -8,7 +8,7 @@ import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 const Configurator = () => {
   return (
     <>
-      <Canvas className='canvas'>
+      <Canvas className='canvas' shadows>
         <PresentationControls
           speed={1.5}
           global
@@ -16,18 +16,19 @@ const Configurator = () => {
           polar={[-0.1, Math.PI / 4]}
         >
           <Stage
+            preset='soft'
             intensity={1.5}
             environment='city'
             shadows={{
               type: 'accumulative',
-              color: 'skyblue',
-              colorBlend: 2,
-              opacity: 2,
+              color: '#f3f5f9',
+              colorblend: 0.5,
+              opacity: 0.5,
             }}
-            adjustCamera={2}
+            adjustCamera={3}
           >
-            <mesh>
-              <boxGeometry />
+            <mesh castShadow>
+              <boxGeometry args={[1, 1, 1]} />
               <meshNormalMaterial />
             </mesh>
           </Stage>
