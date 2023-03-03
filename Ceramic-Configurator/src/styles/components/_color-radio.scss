@@ -1,0 +1,46 @@
+/*
+* Color Boxes
+*/
+
+.color-radio{
+    $rootSelector: &;
+    display: flex;
+    flex-direction: row; 
+
+    &__item{
+    $rootSelector: &;
+    margin-right: 8px;
+    width: 64px;
+    height: 64px;
+
+    // background-color: var(--color-beige);
+    border-radius: 50px;
+
+    // border: 3px solid transparent;
+    box-shadow: 0 4px 6px hsla(219, 52%, 21%, 0.1);
+
+    &:hover{
+        cursor: pointer;
+    }
+
+}
+}
+
+/* HIDE RADIO */
+[type=radio] { 
+position: absolute;
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + img {
+cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + img {
+outline: 3px solid var(--color-primary);
+}
+

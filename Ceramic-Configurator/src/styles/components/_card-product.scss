@@ -1,0 +1,14 @@
+.card-product{
+    $rootSelector: &;
+
+    &__wrapper{
+        display: flex;
+        flex-direction: row;
+    }
+
+    &__body{
+        display: flex;
+        flex-direction: column;
+        padding-left: 12px;
+    }
+}

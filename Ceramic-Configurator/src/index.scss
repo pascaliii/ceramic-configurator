@@ -1,0 +1,64 @@
+@import './styles/fonts';
+@import './styles/colors';
+
+@import './styles/components/sidebar';
+@import './styles/components/color-box';
+@import './styles/components/color-radio';
+@import './styles/components/button';
+@import './styles/components/card-product';
+@import './styles/components/card';
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  --brp-0: 320px;
+  --brp-1: 375px;
+  --brp-2: 425px;
+  --brp-3: 768px;
+  --brp-4: 1024px;
+  --brp-5: 1440px;
+}
+*{
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+
+}
+
+.App{
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--color-background);
+  
+}
+
+.canvas{
+    z-index: 999;
+}
+
+
+.ui{
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    right: 0;
+}
+
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 1024px) {
+   
+}
+
+@media only screen and (min-width: 1440px) {
+   
+}
