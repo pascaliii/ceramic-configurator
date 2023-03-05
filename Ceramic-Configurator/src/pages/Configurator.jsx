@@ -9,12 +9,23 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Vector3 } from 'three'
 
+import { Suspense, useState } from 'react'
+
 import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
 import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import Cup from '../components/Cup'
 
 const Configurator = () => {
+  const [textures, setTextures] = useState([
+    '/textures/clay_basic/clay_floor_001_diff_1k.jpg',
+    './textures/clay_basic/clay_floor_001_nor_gl_1k.jpg',
+    './textures/clay_basic/clay_floor_001_disp_1k.jpg',
+    // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
+    // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
+    // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
+  ])
+
   const [
     colorMap,
     normalMap,
@@ -22,14 +33,29 @@ const Configurator = () => {
     aoMap,
     roughnessMap,
     metalnessMap,
-  ] = useLoader(TextureLoader, [
-    '/textures/clay_floor_001_diff_1k.jpg',
-    './textures/clay_floor_001_nor_gl_1k.jpg',
-    './textures/clay_floor_001_disp_1k.jpg',
-    './textures/clay_floor_001_arm_1k.jpg',
-    './textures/clay_floor_001_arm_1k.jpg',
-    './textures/clay_floor_001_arm_1k.jpg',
-  ])
+  ] = useLoader(TextureLoader, textures)
+
+  const [color, setColor] = useState('')
+
+  // const handleGlazeColor = (color) => {
+  //   switch (color) {
+  //     case 'green':
+  //       setTextures([
+  //         '/textures/clay_spreckled/gravel_concrete_diff_1k.jpg',
+  //         './textures/clay_spreckled/gravel_concrete_nor_gl_1k.jpg',
+  //         './textures/clay_spreckled/gravel_concrete_disp_1k.jpg',
+  //         './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
+  //         './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
+  //         './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
+  //       ])
+  //       break
+  //     case 'blue':
+  //       setColor('#000080')
+  //       break
+  //     default:
+  //       return
+  //   }
+  // }
 
   return (
     <>
@@ -52,7 +78,7 @@ const Configurator = () => {
             }}
             adjustCamera={2}
           >
-            <mesh castShadow>
+            <Suspense fallback={null}>
               <Cup
                 colorMap={colorMap}
                 normalMap={normalMap}
@@ -60,8 +86,9 @@ const Configurator = () => {
                 aoMap={aoMap}
                 roughnessMap={roughnessMap}
                 metalnessMap={metalnessMap}
+                color={color}
               />
-            </mesh>
+            </Suspense>
           </Stage>
         </PresentationControls>
       </Canvas>
@@ -96,12 +123,14 @@ const Configurator = () => {
                   value='clay'
                   image='/glazes/glazes_clay_beige_plain.svg'
                   alt='Option 1'
+                  isChecked={true}
                 />
                 <ColorRadioItem
                   name='clay'
                   value='clay-spreckled'
                   image='/glazes/glazes_clay_beige_spreckle.svg'
                   alt='Option 2'
+                  // onClick={() => handleGlazeColor('green')}
                 />
               </ColorRadio>
             </div>
@@ -115,6 +144,7 @@ const Configurator = () => {
                     value='transparent'
                     image='/glazes/glazes_glaze_matt_transparent.svg'
                     alt='Option 1'
+                    isChecked={true}
                   />
                   <ColorRadioItem
                     name='glaze'

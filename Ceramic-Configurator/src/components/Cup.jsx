@@ -6,6 +6,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as THREE from 'three'
 
 export const Cup = ({
+  color,
   colorMap,
   normalMap,
   displacementMap,
@@ -20,9 +21,10 @@ export const Cup = ({
   return (
     <>
       <group dispose={null}>
-        <mesh geometry={nodes.Cup.geometry}>
+        <mesh geometry={nodes.Cup.geometry} castShadow>
           <meshStandardMaterial
             map={colorMap}
+            color={color}
             normalMap={normalMap}
             // displacementMap={displacementMap}
             aoMap={aoMap}
