@@ -1,11 +1,36 @@
-import { Stage, PresentationControls } from '@react-three/drei'
-import { Canvas, useThree, useFrame } from '@react-three/fiber'
+import {
+  Stage,
+  PresentationControls,
+  Environment,
+  useTexture,
+} from '@react-three/drei'
+import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import { Vector3 } from 'three'
+
 import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
 import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
+import Cup from '../components/Cup'
 
 const Configurator = () => {
+  const [
+    colorMap,
+    normalMap,
+    displacementMap,
+    aoMap,
+    roughnessMap,
+    metalnessMap,
+  ] = useLoader(TextureLoader, [
+    '/textures/clay_floor_001_diff_1k.jpg',
+    './textures/clay_floor_001_nor_gl_1k.jpg',
+    './textures/clay_floor_001_disp_1k.jpg',
+    './textures/clay_floor_001_arm_1k.jpg',
+    './textures/clay_floor_001_arm_1k.jpg',
+    './textures/clay_floor_001_arm_1k.jpg',
+  ])
+
   return (
     <>
       <Canvas className='canvas' shadows>
@@ -17,19 +42,25 @@ const Configurator = () => {
         >
           <Stage
             preset='soft'
-            intensity={1.5}
-            environment='city'
+            intensity={0.1}
+            environment='apartment'
             shadows={{
               type: 'accumulative',
               color: '#f3f5f9',
               colorblend: 0.5,
               opacity: 0.5,
             }}
-            adjustCamera={3}
+            adjustCamera={2}
           >
             <mesh castShadow>
-              <boxGeometry args={[1, 1, 1]} />
-              <meshNormalMaterial />
+              <Cup
+                colorMap={colorMap}
+                normalMap={normalMap}
+                displacementMap={displacementMap}
+                aoMap={aoMap}
+                roughnessMap={roughnessMap}
+                metalnessMap={metalnessMap}
+              />
             </mesh>
           </Stage>
         </PresentationControls>
