@@ -4,13 +4,14 @@ import {
   Environment,
   useTexture,
   Loader,
+  // CameraControls,
 } from '@react-three/drei'
 import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { Vector3 } from 'three'
+import { Vector3, MathUtils } from 'three'
 
-import { Suspense, useState } from 'react'
+import { Suspense, useState, useRef } from 'react'
 
 import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
@@ -18,7 +19,11 @@ import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import Cup from '../components/Cup'
 import { LoadingScreen } from '../components/LoadingScreen'
 
+// const { DEG2RAD } = MathUtils
+
 const Configurator = () => {
+  // const cameraControlsRef = useRef()
+
   const [textures, setTextures] = useState([
     '/textures/clay_basic/clay_floor_001_diff_1k.jpg',
     './textures/clay_basic/clay_floor_001_nor_gl_1k.jpg',
@@ -64,6 +69,7 @@ const Configurator = () => {
   return (
     <>
       <Canvas className='canvas' shadows>
+        {/* <CameraControls ref={cameraControlsRef} /> */}
         <Suspense fallback={null}>
           <PresentationControls
             speed={1.5}
@@ -97,14 +103,16 @@ const Configurator = () => {
         </Suspense>
       </Canvas>
       <LoadingScreen started={start} onStarted={() => setStart(true)} />
+      <h1 className='website__title'>Pascale Schmidt - Ceramic Configurator</h1>
       <div className='ui'>
         <div className='sidebar'>
           <div className='sidebar__header'>
-            <h2 className='sidebar__header-title'>Configuration Parameters</h2>
+            <h2 className='sidebar__headline'>Configuration Parameters</h2>
           </div>
           <div className='sidebar__body'>
             <div className='sidebar__item'>
-              <div className='card-product'>
+              Hier kommen die ausgewählten Informationen hin
+              {/* <div className='card-product'>
                 <h4>Selected Product</h4>
                 <div className='card-product__wrapper'>
                   <div className='color-box-group'>
@@ -118,10 +126,13 @@ const Configurator = () => {
                     <Button label={'Change'} link />
                   </div>
                 </div>
-              </div>
+              </div> */}
+            </div>
+            <div className='sidebar__header'>
+              <h3 className='sidebar__headline'>Type of Clay</h3>
+              <span className='sidebar__selection'>Basic beige clay</span>
             </div>
             <div className='sidebar__item'>
-              <h4>Type of Clay</h4>
               <ColorRadio>
                 <ColorRadioItem
                   name='clay'
@@ -139,10 +150,13 @@ const Configurator = () => {
                 />
               </ColorRadio>
             </div>
+            <div className='sidebar__header'>
+              <h3 className='sidebar__headline'>Type of Glaze</h3>
+              <span className='sidebar__selection'>Botz Transparent</span>
+            </div>
             <div className='sidebar__item'>
               <form name='glazeParams' id='glazeParams'>
-                <h4>Type of Glaze</h4>
-                <h5>Shiny</h5>
+                {/* <h5>Shiny</h5> */}
                 <ColorRadio>
                   <ColorRadioItem
                     name='glaze'
@@ -177,7 +191,7 @@ const Configurator = () => {
                   />
                 </ColorRadio>
 
-                <h5>Matt</h5>
+                {/* <h5>Matt</h5> */}
                 <ColorRadio>
                   <ColorRadioItem
                     name='glaze'
@@ -212,9 +226,11 @@ const Configurator = () => {
                 </ColorRadio>
               </form>
             </div>
-
+            <div className='sidebar__header'>
+              <h3 className='sidebar__headline'>Parts of Glazing</h3>
+              <span className='sidebar__selection'>2/3</span>
+            </div>
             <div className='sidebar__item'>
-              <h4>Parts of Glazing</h4>
               <ColorRadio>
                 <ColorRadioItem
                   name='glaze_parts'
@@ -242,17 +258,20 @@ const Configurator = () => {
                 />
               </ColorRadio>
             </div>
-            <div className='sidebar__item'>
-              <Button label={'Save as image'} />
-              <Button label={'View in VR'} outline />
-              <Button label={'Back'} link />
-            </div>
           </div>
-          {/* <div className='sidebar__footer'>
-           <Button label={'Save as image'} />
-              <Button label={'View in VR'} outline />
-              <Button label={'Back'} link />
-          </div> */}
+          <div className='sidebar__footer'>
+            <Button
+              label={'Save as image'}
+              // onClick={() =>
+              //   cameraControlsRef.current?.rotate(45 * DEG2RAD, 0, true)
+              // }
+            />
+            <Button
+              label={'View in VR'}
+              outline
+              // onClick={() => cameraControlsRef.current?.reset(true)}
+            />
+          </div>
         </div>
       </div>
     </>

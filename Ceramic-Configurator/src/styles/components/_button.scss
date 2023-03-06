@@ -27,13 +27,16 @@
     }
 
     &--outline{
-        background-color: white;
+        background-color: transparent;
         color: var(--color-primary);
 
         &:hover{
             border-color: var(--color-primary-darker);
             color: var(--color-primary-darker);
+            background-color: transparent;
         }
+
+      
     }
 
     &--link{

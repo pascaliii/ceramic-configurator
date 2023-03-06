@@ -7,11 +7,20 @@
     display: flex;
     flex-direction: row; 
 
+    
+
+    &__item{
+         margin-right: 8px;
+&:last-child{
+            margin-right: 0;
+         }
+         
+    }
+
     &__item-image{
     $rootSelector: &;
-    margin-right: 8px;
-    width: 64px;
-    height: 64px;
+    width: 52px;
+    height: 52px;
 
     // background-color: var(--color-beige);
     border-radius: 50px;

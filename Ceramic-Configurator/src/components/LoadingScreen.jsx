@@ -20,17 +20,19 @@ export const LoadingScreen = ({ started, onStarted }) => {
         <br />
         <p className='loading-screen__description'>
           This project is part of my master thesis in{' '}
-          <strong>Digital Reality</strong>. <br /> I used my technological
-          knowledge to optimize the process of my hobby, which is pottery. This
-          configurator helps me to decide which glazes would word with different
-          shapes. I created PBR materials that are as close as possible to the
-          common ceramic glazes from Botz and other Glaze companies.
+          <strong>Digital Reality</strong> at{' '}
+          <strong>University of Applied Sciences Hamburg </strong>. <br /> I
+          used my technological knowledge to optimize the process of my hobby,
+          which is pottery. This configurator helps me to decide which glazes
+          would word with different shapes. I created PBR materials that are as
+          close as possible to the common ceramic glazes from Botz and other
+          Glaze companies.
           <br />
           <br />I hope this configurator is not only used by me, but also by
           other potters. <br />
           <br />
           <strong>Disclaimer</strong> <br /> Even though i tried my best to
-          create realistic Materials/Glazes, the look of your final product may
+          create realistic materials/glazes, the look of your final product may
           look different depending on the fire temperature and clay type. For
           now the materials represent glazes burned by 1250°C. <br />
           <br /> Have fun and try it out!
