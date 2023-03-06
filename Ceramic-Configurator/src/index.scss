@@ -7,6 +7,7 @@
 @import './styles/components/button';
 @import './styles/components/card-product';
 @import './styles/components/card';
+@import './styles/components/loading-screen';
 
 
 :root {
@@ -50,6 +51,9 @@ body {
     top: 0;
     right: 0;
 }
+
+
+// Scrollbar
 
 ::-webkit-scrollbar {
     width: 4px;

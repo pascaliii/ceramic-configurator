@@ -3,6 +3,7 @@ import {
   PresentationControls,
   Environment,
   useTexture,
+  Loader,
 } from '@react-three/drei'
 import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
@@ -15,6 +16,7 @@ import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
 import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import Cup from '../components/Cup'
+import { LoadingScreen } from '../components/LoadingScreen'
 
 const Configurator = () => {
   const [textures, setTextures] = useState([
@@ -36,6 +38,8 @@ const Configurator = () => {
   ] = useLoader(TextureLoader, textures)
 
   const [color, setColor] = useState('')
+
+  const [start, setStart] = useState(false)
 
   // const handleGlazeColor = (color) => {
   //   switch (color) {
@@ -60,25 +64,25 @@ const Configurator = () => {
   return (
     <>
       <Canvas className='canvas' shadows>
-        <PresentationControls
-          speed={1.5}
-          global
-          zoom={0.7}
-          polar={[-0.1, Math.PI / 4]}
-        >
-          <Stage
-            preset='soft'
-            intensity={0.1}
-            environment='apartment'
-            shadows={{
-              type: 'accumulative',
-              color: '#f3f5f9',
-              colorblend: 0.5,
-              opacity: 0.5,
-            }}
-            adjustCamera={2}
+        <Suspense fallback={null}>
+          <PresentationControls
+            speed={1.5}
+            global
+            zoom={0.7}
+            polar={[-0.1, Math.PI / 4]}
           >
-            <Suspense fallback={null}>
+            <Stage
+              preset='soft'
+              intensity={0.1}
+              environment='apartment'
+              shadows={{
+                type: 'accumulative',
+                color: '#f3f5f9',
+                colorblend: 0.5,
+                opacity: 0.5,
+              }}
+              adjustCamera={2}
+            >
               <Cup
                 colorMap={colorMap}
                 normalMap={normalMap}
@@ -88,10 +92,11 @@ const Configurator = () => {
                 metalnessMap={metalnessMap}
                 color={color}
               />
-            </Suspense>
-          </Stage>
-        </PresentationControls>
+            </Stage>
+          </PresentationControls>
+        </Suspense>
       </Canvas>
+      <LoadingScreen started={start} onStarted={() => setStart(true)} />
       <div className='ui'>
         <div className='sidebar'>
           <div className='sidebar__header'>
