@@ -4,7 +4,6 @@ import {
   Environment,
   useTexture,
   Loader,
-  // CameraControls,
 } from '@react-three/drei'
 import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
@@ -19,11 +18,7 @@ import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import Cup from '../components/Cup'
 import { LoadingScreen } from '../components/LoadingScreen'
 
-// const { DEG2RAD } = MathUtils
-
 const Configurator = () => {
-  // const cameraControlsRef = useRef()
-
   const [textures, setTextures] = useState([
     '/textures/clay_basic/clay_floor_001_diff_1k.jpg',
     './textures/clay_basic/clay_floor_001_nor_gl_1k.jpg',
@@ -69,11 +64,11 @@ const Configurator = () => {
   return (
     <>
       <Canvas className='canvas' shadows>
-        {/* <CameraControls ref={cameraControlsRef} /> */}
         <Suspense fallback={null}>
           <PresentationControls
             speed={1.5}
             global
+            rotatio={[]}
             zoom={0.7}
             polar={[-0.1, Math.PI / 4]}
           >
@@ -235,42 +230,34 @@ const Configurator = () => {
                 <ColorRadioItem
                   name='glaze_parts'
                   value='full'
-                  image='/glaze_parts_full.svg'
+                  image='/glaze_parts/glaze_parts_full.svg'
                   alt='Option 7'
+                  isChecked={true}
                 />
                 <ColorRadioItem
                   name='glaze_parts'
                   value='twothrid'
-                  image='/glaze_parts_2:3.svg'
+                  image='/glaze_parts/glaze_parts_twothird.svg'
                   alt='Option 7'
                 />
                 <ColorRadioItem
                   name='glaze_parts'
                   value='half'
-                  image='/glaze_parts_half.svg'
+                  image='/glaze_parts/glaze_parts_half.svg'
                   alt='Option 7'
                 />
                 <ColorRadioItem
                   name='glaze_parts'
                   value='inner'
-                  image='/glaze_parts_inner.svg'
+                  image='/glaze_parts/glaze_parts_onethird.svg'
                   alt='Option 7'
                 />
               </ColorRadio>
             </div>
           </div>
           <div className='sidebar__footer'>
-            <Button
-              label={'Save as image'}
-              // onClick={() =>
-              //   cameraControlsRef.current?.rotate(45 * DEG2RAD, 0, true)
-              // }
-            />
-            <Button
-              label={'View in VR'}
-              outline
-              // onClick={() => cameraControlsRef.current?.reset(true)}
-            />
+            <Button label={'Save as image'} />
+            <Button label={'View in VR'} outline />
           </div>
         </div>
       </div>
