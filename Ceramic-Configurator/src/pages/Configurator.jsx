@@ -18,6 +18,10 @@ import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import Cup from '../components/Cup'
 import { LoadingScreen } from '../components/LoadingScreen'
 
+import shinyGlazes from '../data/shinyGlazes.json'
+import mattGlazes from '../data/mattGlazes.json'
+import clays from '../data/clays.json'
+
 const Configurator = () => {
   const [textures, setTextures] = useState([
     '/textures/clay_basic/clay_floor_001_diff_1k.jpg',
@@ -27,6 +31,17 @@ const Configurator = () => {
     // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
     // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
   ])
+
+  const [glaze, setGlaze] = useState('Botz Transparent')
+  const [clay, setClay] = useState('Basic Beige')
+
+  const onGlazeOptionChange = (e) => {
+    setGlaze(e.target.value)
+  }
+
+  const onClayOptionChange = (e) => {
+    setClay(e.target.value)
+  }
 
   const [
     colorMap,
@@ -97,7 +112,7 @@ const Configurator = () => {
           </PresentationControls>
         </Suspense>
       </Canvas>
-      <LoadingScreen started={start} onStarted={() => setStart(true)} />
+      {/* <LoadingScreen started={start} onStarted={() => setStart(true)} /> */}
       <h1 className='website__title'>Pascale Schmidt - Ceramic Configurator</h1>
       <div className='ui'>
         <div className='sidebar'>
@@ -107,117 +122,58 @@ const Configurator = () => {
           <div className='sidebar__body'>
             <div className='sidebar__item'>
               Hier kommen die ausgewählten Informationen hin
-              {/* <div className='card-product'>
-                <h4>Selected Product</h4>
-                <div className='card-product__wrapper'>
-                  <div className='color-box-group'>
-                    <div className='color-box color-box--large'></div>
-                  </div>
-                  <div className='card-product__body'>
-                    <span className='card-product__title'>Product Title</span>
-                    <span className='card-product__description'>
-                      30cm x 20cm x 10cm
-                    </span>
-                    <Button label={'Change'} link />
-                  </div>
-                </div>
-              </div> */}
             </div>
             <div className='sidebar__header'>
               <h3 className='sidebar__headline'>Type of Clay</h3>
-              <span className='sidebar__selection'>Basic beige clay</span>
+              <span className='sidebar__selection'>{clay}</span>
             </div>
             <div className='sidebar__item'>
               <ColorRadio>
-                <ColorRadioItem
-                  name='clay'
-                  value='clay'
-                  image='/glazes/glazes_clay_beige_plain.svg'
-                  alt='Option 1'
-                  isChecked={true}
-                />
-                <ColorRadioItem
-                  name='clay'
-                  value='clay-spreckled'
-                  image='/glazes/glazes_clay_beige_spreckle.svg'
-                  alt='Option 2'
-                  // onClick={() => handleGlazeColor('green')}
-                />
+                {clays.map((clay, index) => (
+                  <ColorRadioItem
+                    key={index}
+                    name='clay'
+                    value={clay.value}
+                    image={clay.src}
+                    alt={clay.alt}
+                    checked={clay === clay.value}
+                    onClick={onClayOptionChange}
+                    // onClick={() => handleGlazeColor('green')}
+                  />
+                ))}
               </ColorRadio>
             </div>
             <div className='sidebar__header'>
               <h3 className='sidebar__headline'>Type of Glaze</h3>
-              <span className='sidebar__selection'>Botz Transparent</span>
+              <span className='sidebar__selection'>{glaze}</span>
             </div>
             <div className='sidebar__item'>
               <form name='glazeParams' id='glazeParams'>
-                {/* <h5>Shiny</h5> */}
                 <ColorRadio>
-                  <ColorRadioItem
-                    name='glaze'
-                    value='transparent'
-                    image='/glazes/glazes_glaze_matt_transparent.svg'
-                    alt='Option 1'
-                    isChecked={true}
-                  />
-                  <ColorRadioItem
-                    name='glaze'
-                    value='blue'
-                    image='/glazes/glazes_glaze_shiny_blue.svg'
-                    alt='Option 2'
-                  />
-                  <ColorRadioItem
-                    name='glaze'
-                    value='lightblue'
-                    image='/glazes/glazes_glaze_shiny_blue_light.svg'
-                    alt='Option 3'
-                  />
-                  <ColorRadioItem
-                    name='glaze'
-                    value='chartreuse'
-                    image='/glazes/glazes_glaze_shiny_chartreuse.svg'
-                    alt='Option 4'
-                  />
-                  <ColorRadioItem
-                    name='glaze'
-                    value='green'
-                    image='/glazes/glazes_glaze_shiny_green.svg'
-                    alt='Option 5'
-                  />
+                  {shinyGlazes.map((glaze, index) => (
+                    <ColorRadioItem
+                      key={index}
+                      name='glaze'
+                      value={glaze.value}
+                      image={glaze.src}
+                      alt={glaze.alt}
+                      checked={glaze === glaze.value}
+                      onClick={onGlazeOptionChange}
+                    />
+                  ))}
                 </ColorRadio>
-
-                {/* <h5>Matt</h5> */}
                 <ColorRadio>
-                  <ColorRadioItem
-                    name='glaze'
-                    value='mblack'
-                    image='/glazes/glazes_glaze_matt_black.svg'
-                    alt='Option 2'
-                  />
-                  <ColorRadioItem
-                    name='glaze'
-                    value='mblue'
-                    image='/glazes/glazes_glaze_matt_blue.svg'
-                    alt='Option 3'
-                  />
-                  <ColorRadioItem
-                    name='glaze'
-                    value='mblueintense'
-                    image='/glazes/glazes_glaze_matt_blue_intense.svg'
-                    alt='Option 4'
-                  />
-                  <ColorRadioItem
-                    name='glaze'
-                    value='mgreen'
-                    image='/glazes/glazes_glaze_matt_green.svg'
-                    alt='Option 5'
-                  />
-                  <ColorRadioItem
-                    name='glaze'
-                    value='mpink'
-                    image='/glazes/glazes_glaze_matt_pink.svg'
-                    alt='Option 6'
-                  />
+                  {mattGlazes.map((glaze, index) => (
+                    <ColorRadioItem
+                      key={index}
+                      name='glaze'
+                      value={glaze.value}
+                      image={glaze.src}
+                      alt={glaze.alt}
+                      checked={glaze === glaze.value}
+                      onClick={onGlazeOptionChange}
+                    />
+                  ))}
                 </ColorRadio>
               </form>
             </div>
