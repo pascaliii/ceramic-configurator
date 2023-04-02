@@ -49,3 +49,4 @@ export const LoadingScreen = ({ started, onStarted }) => {
     </div>
   )
 }
+export default LoadingScreen

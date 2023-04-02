@@ -16,65 +16,38 @@ import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
 import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import Cup from '../components/Cup'
-import { LoadingScreen } from '../components/LoadingScreen'
+import LoadingScreen from '../components/LoadingScreen'
 
 import shinyGlazes from '../data/shinyGlazes.json'
 import mattGlazes from '../data/mattGlazes.json'
 import clays from '../data/clays.json'
 
 const Configurator = () => {
-  const [textures, setTextures] = useState([
-    '/textures/clay_basic/clay_floor_001_diff_1k.jpg',
-    './textures/clay_basic/clay_floor_001_nor_gl_1k.jpg',
-    './textures/clay_basic/clay_floor_001_disp_1k.jpg',
-    // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
-    // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
-    // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
-  ])
+  // const texture1 = [
+  //   '/textures/clay_basic/clay_floor_001_diff_1k.jpg',
+  //   './textures/clay_basic/clay_floor_001_nor_gl_1k.jpg',
+  //   './textures/clay_basic/clay_floor_001_disp_1k.jpg',
+  //   // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
+  //   // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
+  //   // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
+  // ]
+
+  const [selectedMaterial, setSelectedMaterial] = useState('default')
 
   const [glaze, setGlaze] = useState('Botz Transparent')
   const [clay, setClay] = useState('Basic Beige')
+  const [start, setStart] = useState(false) // für Loading Screen
 
   const onGlazeOptionChange = (e) => {
     setGlaze(e.target.value)
+    setSelectedMaterial(clay)
   }
 
   const onClayOptionChange = (e) => {
+    setSelectedMaterial(e.target.value)
     setClay(e.target.value)
+    console.log(clay)
   }
-
-  const [
-    colorMap,
-    normalMap,
-    displacementMap,
-    aoMap,
-    roughnessMap,
-    metalnessMap,
-  ] = useLoader(TextureLoader, textures)
-
-  const [color, setColor] = useState('')
-
-  const [start, setStart] = useState(false)
-
-  // const handleGlazeColor = (color) => {
-  //   switch (color) {
-  //     case 'green':
-  //       setTextures([
-  //         '/textures/clay_spreckled/gravel_concrete_diff_1k.jpg',
-  //         './textures/clay_spreckled/gravel_concrete_nor_gl_1k.jpg',
-  //         './textures/clay_spreckled/gravel_concrete_disp_1k.jpg',
-  //         './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
-  //         './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
-  //         './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
-  //       ])
-  //       break
-  //     case 'blue':
-  //       setColor('#000080')
-  //       break
-  //     default:
-  //       return
-  //   }
-  // }
 
   return (
     <>
@@ -100,13 +73,13 @@ const Configurator = () => {
               adjustCamera={2}
             >
               <Cup
-                colorMap={colorMap}
-                normalMap={normalMap}
-                displacementMap={displacementMap}
-                aoMap={aoMap}
-                roughnessMap={roughnessMap}
-                metalnessMap={metalnessMap}
-                color={color}
+                // colorMap={props.colorMap}
+                // normalMap={props.normalMap}
+                // displacementMap={props.displacementMap}
+                // aoMap={props.aoMap}
+                // roughnessMap={props.roughnessMap}
+                // metalnessMap={props.metalnessMap}
+                selectedMaterial={selectedMaterial}
               />
             </Stage>
           </PresentationControls>
