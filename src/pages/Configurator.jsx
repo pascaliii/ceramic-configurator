@@ -63,7 +63,7 @@ const Configurator = () => {
             <Stage
               preset='soft'
               intensity={0.2}
-              environment='apartment'
+              environment={null}
               shadows={{
                 type: 'accumulative',
                 color: '#f3f5f9',
@@ -72,6 +72,11 @@ const Configurator = () => {
               }}
               adjustCamera={2}
             >
+              <Environment
+                background={false} // Whether to affect scene.background
+                files={'lebombo_1k.hdr'}
+                path={'/public/'}
+              />
               <Cup
                 // colorMap={props.colorMap}
                 // normalMap={props.normalMap}
