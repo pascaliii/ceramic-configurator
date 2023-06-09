@@ -1,0 +1,107 @@
+@import './styles/fonts';
+@import './styles/colors';
+
+@import './styles/components/sidebar';
+
+@import './styles/components/color-radio';
+@import './styles/components/button';
+@import './styles/components/card-product';
+@import './styles/components/card';
+@import './styles/components/loading-screen';
+
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  --brp-0: 320px;
+  --brp-1: 375px;
+  --brp-2: 425px;
+  --brp-3: 768px;
+  --brp-4: 1024px;
+  --brp-5: 1440px;
+}
+*{
+    box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+
+}
+
+.website__title{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--color-secondary-text);
+    text-transform: uppercase;
+    margin:0;
+    padding: 18px 24px;
+}
+
+.App{
+    width: 100vw;
+    height: 100vh;
+
+    background-color: var(--color-background);
+  
+}
+
+.canvas{
+    z-index: 999;
+    width: 80% !important;
+}
+
+
+.ui{
+    position: absolute;
+    z-index: 999;
+    top: 0;
+    right: 0;
+}
+
+
+// Scrollbar
+
+::-webkit-scrollbar {
+    width: 4px;
+  }
+
+::-webkit-scrollbar-track {
+    background: var(--color-border);
+
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--color-border-darker);
+    border-radius: 50px;
+
+  }
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-darker);
+ border-radius: 50px;
+  }
+
+::-webkit-scrollbar-thumb:active {
+    background: var(--color-border);
+
+  }
+
+
+@media only screen and (min-width: 768px) {
+
+}
+
+@media only screen and (min-width: 1024px) {
+   
+}
+
+@media only screen and (min-width: 1440px) {
+   
+}
