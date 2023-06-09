@@ -75,7 +75,7 @@ const Configurator = () => {
               <Environment
                 background={false} // Whether to affect scene.background
                 files={'lebombo_1k.hdr'}
-                path={'/public/'}
+                path={'/'}
               />
               <Cup
                 // colorMap={props.colorMap}
