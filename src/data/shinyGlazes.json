@@ -2,36 +2,22 @@
   {
     "_id": "1",
     "name": "glaze",
-    "value": "Botz Transparent",
+    "value": "9102 Transparent (B)",
     "src": "/glazes/glazes_glaze_matt_transparent.svg",
-    "alt": "Botz Transparent"
+    "alt": "9102 Transparent Botz"
   },
   {
     "_id": "2",
     "name": "glaze",
-    "value": "Botz Türkisgranit",
+    "value": "1201 Pfefferminz (CJ)",
     "src": "/glazes/glazes_glaze_shiny_blue.svg",
-    "alt": "Botz Türkisgranit"
+    "alt": "1201 Pfefferminz Carl Jäger"
   },
   {
     "_id": "3",
     "name": "glaze",
-    "value": "Botz Patina",
+    "value": "1253a Hellblau (CJ)",
     "src": "/glazes/glazes_glaze_shiny_blue_light.svg",
-    "alt": "Botz Patina"
-  },
-  {
-    "_id": "4",
-    "name": "glaze",
-    "value": "Botz Lilaeffekt",
-    "src": "/glazes/glazes_glaze_shiny_chartreuse.svg",
-    "alt": "Botz Lilaeffekt"
-  },
-  {
-    "_id": "4",
-    "name": "glaze",
-    "value": "Botz Cremeweiß",
-    "src": "/glazes/glazes_glaze_shiny_green.svg",
-    "alt": "Botz Cremeweiß"
+    "alt": "1253a Hellblau Carl Jäger"
   }
 ]

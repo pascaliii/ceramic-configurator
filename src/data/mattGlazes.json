@@ -2,36 +2,36 @@
   {
     "_id": "1",
     "name": "glaze",
-    "value": "Botz Black",
+    "value": "Keine Glasur",
     "src": "/glazes/glazes_glaze_matt_black.svg",
-    "alt": "Botz Black"
+    "alt": "Keine Glasur"
   },
   {
     "_id": "2",
     "name": "glaze",
-    "value": "Botz Midnight Blue",
+    "value": "9897 Lilaeffekt (B)",
     "src": "/glazes/glazes_glaze_matt_blue.svg",
-    "alt": "Botz Midnight Blue"
+    "alt": "9897 Lilaeffekt Botz"
   },
   {
     "_id": "3",
     "name": "glaze",
-    "value": "Botz Intense Blue",
+    "value": "9863 Vergissmeinnicht (B)",
     "src": "/glazes/glazes_glaze_matt_blue_intense.svg",
-    "alt": "Botz Intense Blue"
+    "alt": "9863 Vergissmeinnicht Botz"
   },
   {
     "_id": "4",
     "name": "glaze",
-    "value": "Botz Forest Green",
+    "value": "9867 Patina (B)",
     "src": "/glazes/glazes_glaze_matt_green.svg",
-    "alt": "Botz Forest Green"
+    "alt": "9867 Patina Botz"
   },
   {
     "_id": "4",
     "name": "glaze",
-    "value": "Botz Pink",
+    "value": "9864 Rosa Fels (B)",
     "src": "/glazes/glazes_glaze_matt_pink.svg",
-    "alt": "Botz Pink"
+    "alt": "9864 Rosa Fels Botz"
   }
 ]
