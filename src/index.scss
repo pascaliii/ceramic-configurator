@@ -31,20 +31,7 @@ body {
 
 }
 
-.website__title{
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 12px;
-    font-weight: 500;
-    color: var(--color-secondary-text);
-    text-transform: uppercase;
-    margin:0;
-    padding: 18px 24px;
-}
-
-.App{
+.app{
     width: 100vw;
     height: 100vh;
 
@@ -52,17 +39,31 @@ body {
   
 }
 
+.title{
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+    font-size: 10px;
+    font-weight: 500;
+    color: var(--color-secondary-text);
+    text-transform: uppercase;
+    margin:0;
+    padding: 18px 24px;
+}
+
+
+
 .canvas{
     z-index: 999;
-    width: 80% !important;
+    width: 100%;
 }
 
 
 .ui{
-    position: absolute;
+    position: static;
     z-index: 999;
-    top: 0;
-    right: 0;
+
 }
 
 
@@ -73,7 +74,7 @@ body {
   }
 
 ::-webkit-scrollbar-track {
-    background: var(--color-border);
+    background: var(--color-background-ui);
 
 }
 
@@ -85,7 +86,7 @@ body {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--color-border-darker);
- border-radius: 50px;
+    border-radius: 50px;
   }
 
 ::-webkit-scrollbar-thumb:active {
@@ -94,14 +95,20 @@ body {
   }
 
 
-@media only screen and (min-width: 768px) {
-
-}
-
 @media only screen and (min-width: 1024px) {
-   
+    .title{
+    font-size: 10px;
+}
+    .ui{
+        position: absolute;
+        z-index: 999;
+        top: 0;
+        right: 0;
+    }
+
+    .canvas{
+    z-index: 999;
+    width: 80% !important;
+}
 }
 
-@media only screen and (min-width: 1440px) {
-   
-}

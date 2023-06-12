@@ -91,17 +91,20 @@ const Configurator = () => {
         </Suspense>
       </Canvas>
       {/* <LoadingScreen started={start} onStarted={() => setStart(true)} /> */}
-      <h1 className='website__title'>Pascale Schmidt - Ceramic Configurator</h1>
+      <h1 className='title'>Pascale Schmidt - Ceramic Configurator</h1>
       <div className='ui'>
         <div className='sidebar'>
-          <div className='sidebar__header'>
+          {/* <div className='sidebar__header'>
             <h2 className='sidebar__headline'>Configuration Parameters</h2>
-          </div>
+          </div> */}
           <div className='sidebar__body'>
+            <div className='sidebar__headline-wrapper'>
+              <h2 className='sidebar__headline'>Configuration Parameters</h2>
+            </div>
             <div className='sidebar__item'>
               Hier kommen die ausgewählten Informationen hin
             </div>
-            <div className='sidebar__header'>
+            <div className='sidebar__headline-wrapper'>
               <h3 className='sidebar__headline'>Type of Clay</h3>
               <span className='sidebar__selection'>{clay}</span>
             </div>
@@ -121,7 +124,7 @@ const Configurator = () => {
                 ))}
               </ColorRadio>
             </div>
-            <div className='sidebar__header'>
+            <div className='sidebar__headline-wrapper'>
               <h3 className='sidebar__headline'>Type of Glaze</h3>
               <span className='sidebar__selection'>{glaze}</span>
             </div>
@@ -155,7 +158,7 @@ const Configurator = () => {
                 </ColorRadio>
               </form>
             </div>
-            <div className='sidebar__header'>
+            <div className='sidebar__headline-wrapper'>
               <h3 className='sidebar__headline'>Parts of Glazing</h3>
               <span className='sidebar__selection'>2/3</span>
             </div>

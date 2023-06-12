@@ -6,7 +6,7 @@ import Configurator from './pages/Configurator'
 
 function App() {
   return (
-    <div className='App'>
+    <div className='app'>
       <Configurator />
     </div>
   )
