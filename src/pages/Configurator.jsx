@@ -46,7 +46,6 @@ const Configurator = () => {
   const onClayOptionChange = (e) => {
     setSelectedMaterial(e.target.value)
     setClay(e.target.value)
-    console.log(clay)
   }
 
   return (
@@ -90,13 +89,10 @@ const Configurator = () => {
           </PresentationControls>
         </Suspense>
       </Canvas>
-      {/* <LoadingScreen started={start} onStarted={() => setStart(true)} /> */}
+      <LoadingScreen started={start} onStarted={() => setStart(true)} />
       <h1 className='title'>Pascale Schmidt - Ceramic Configurator</h1>
       <div className='ui'>
         <div className='sidebar'>
-          {/* <div className='sidebar__header'>
-            <h2 className='sidebar__headline'>Configuration Parameters</h2>
-          </div> */}
           <div className='sidebar__body'>
             <div className='sidebar__headline-wrapper'>
               <h2 className='sidebar__headline'>Configuration Parameters</h2>
