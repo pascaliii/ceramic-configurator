@@ -22,25 +22,28 @@ import shinyGlazes from '../data/shinyGlazes.json'
 import mattGlazes from '../data/mattGlazes.json'
 import clays from '../data/clays.json'
 
-const Configurator = () => {
-  // const texture1 = [
-  //   '/textures/clay_basic/clay_floor_001_diff_1k.jpg',
-  //   './textures/clay_basic/clay_floor_001_nor_gl_1k.jpg',
-  //   './textures/clay_basic/clay_floor_001_disp_1k.jpg',
-  //   // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
-  //   // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
-  //   // './textures/clay_basic/clay_floor_001_arm_1k.jpg',
-  // ]
+function DownloadCanvasAsImage() {
+  let downloadLink = document.createElement('a')
+  downloadLink.setAttribute('download', 'MyConfiguration.png')
+  let canvas = document.getElementById('canvas')?.childNodes[0].childNodes[0]
 
+  let dataURL = canvas.toDataURL('image/png')
+  let url = dataURL.replace(/^data:image\/png/, 'data:application/octet-stream')
+  downloadLink.setAttribute('href', url)
+  downloadLink.click()
+}
+
+const Configurator = () => {
   const [selectedMaterial, setSelectedMaterial] = useState('default')
+  const [selectedGlaze, setSelectedGlaze] = useState('default')
 
   const [glaze, setGlaze] = useState('Botz Transparent')
   const [clay, setClay] = useState('Basic Beige')
   const [start, setStart] = useState(false) // für Loading Screen
 
   const onGlazeOptionChange = (e) => {
+    setSelectedGlaze(e.target.value)
     setGlaze(e.target.value)
-    setSelectedMaterial(clay)
   }
 
   const onClayOptionChange = (e) => {
@@ -50,7 +53,12 @@ const Configurator = () => {
 
   return (
     <>
-      <Canvas className='canvas' shadows>
+      <Canvas
+        className='canvas'
+        shadows
+        id='canvas'
+        gl={{ preserveDrawingBuffer: true }}
+      >
         <Suspense fallback={null}>
           <PresentationControls
             speed={1.5}
@@ -66,7 +74,7 @@ const Configurator = () => {
               shadows={{
                 type: 'accumulative',
                 color: '#f3f5f9',
-                colorblend: 0.5,
+                // colorblend: 0.5,
                 opacity: 0.5,
               }}
               adjustCamera={2}
@@ -77,13 +85,8 @@ const Configurator = () => {
                 path={'/static/'}
               />
               <Cup
-                // colorMap={props.colorMap}
-                // normalMap={props.normalMap}
-                // displacementMap={props.displacementMap}
-                // aoMap={props.aoMap}
-                // roughnessMap={props.roughnessMap}
-                // metalnessMap={props.metalnessMap}
                 selectedMaterial={selectedMaterial}
+                selectedGlaze={selectedGlaze}
               />
             </Stage>
           </PresentationControls>
@@ -189,7 +192,7 @@ const Configurator = () => {
             </div>
           </div>
           <div className='sidebar__footer'>
-            <Button label={'Save as image'} />
+            <Button label={'Save as image'} onClick={DownloadCanvasAsImage} />
             <Button label={'View in VR'} outline />
           </div>
         </div>
