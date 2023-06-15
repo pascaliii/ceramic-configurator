@@ -8,7 +8,7 @@ import {
 import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { Vector3, MathUtils } from 'three'
+import { Vector3, MathUtils, sRGBEncoding } from 'three'
 
 import { Suspense, useState, useRef } from 'react'
 
@@ -20,7 +20,7 @@ import LoadingScreen from '../components/LoadingScreen'
 
 import shinyGlazes from '../data/shinyGlazes.json'
 import mattGlazes from '../data/mattGlazes.json'
-import clays from '../data/clays.json'
+import clays from '../data/clays'
 
 function DownloadCanvasAsImage() {
   let downloadLink = document.createElement('a')
@@ -34,20 +34,15 @@ function DownloadCanvasAsImage() {
 }
 
 const Configurator = () => {
-  const [selectedMaterial, setSelectedMaterial] = useState('default')
-  const [selectedGlaze, setSelectedGlaze] = useState('default')
-
   const [glaze, setGlaze] = useState('Botz Transparent')
   const [clay, setClay] = useState('Basic Beige')
   const [start, setStart] = useState(false) // für Loading Screen
 
   const onGlazeOptionChange = (e) => {
-    setSelectedGlaze(e.target.value)
     setGlaze(e.target.value)
   }
 
   const onClayOptionChange = (e) => {
-    setSelectedMaterial(e.target.value)
     setClay(e.target.value)
   }
 
@@ -58,6 +53,9 @@ const Configurator = () => {
         shadows
         id='canvas'
         gl={{ preserveDrawingBuffer: true }}
+        // onCreated={({ gl }) => {
+        //   gl.outputEncoding = sRGBEncoding
+        // }}
       >
         <Suspense fallback={null}>
           <PresentationControls
@@ -84,10 +82,7 @@ const Configurator = () => {
                 files={'lebombo_1k.hdr'}
                 path={'/static/'}
               />
-              <Cup
-                selectedMaterial={selectedMaterial}
-                selectedGlaze={selectedGlaze}
-              />
+              <Cup clay={clay} glaze={glaze} />
             </Stage>
           </PresentationControls>
         </Suspense>
@@ -109,16 +104,15 @@ const Configurator = () => {
             </div>
             <div className='sidebar__item'>
               <ColorRadio>
-                {clays.map((clay, index) => (
+                {clays.map((clay) => (
                   <ColorRadioItem
-                    key={index}
+                    key={clay._id}
                     name='clay'
                     value={clay.value}
                     image={clay.src}
                     alt={clay.alt}
-                    checked={clay === clay.value}
+                    defaultChecked={clay === clay.value}
                     onClick={onClayOptionChange}
-                    // onClick={() => handleGlazeColor('green')}
                   />
                 ))}
               </ColorRadio>
@@ -137,7 +131,7 @@ const Configurator = () => {
                       value={glaze.value}
                       image={glaze.src}
                       alt={glaze.alt}
-                      checked={glaze === glaze.value}
+                      defaultChecked={glaze === glaze.value}
                       onClick={onGlazeOptionChange}
                     />
                   ))}
@@ -150,7 +144,7 @@ const Configurator = () => {
                       value={glaze.value}
                       image={glaze.src}
                       alt={glaze.alt}
-                      checked={glaze === glaze.value}
+                      defaultChecked={glaze === glaze.value}
                       onClick={onGlazeOptionChange}
                     />
                   ))}
@@ -168,7 +162,7 @@ const Configurator = () => {
                   value='full'
                   image='/glaze_parts/glaze_parts_full.svg'
                   alt='Option 7'
-                  isChecked={true}
+                  defaultChecked={true}
                 />
                 <ColorRadioItem
                   name='glaze_parts'

@@ -1,15 +1,6 @@
 import cls from 'classnames'
 
-const ColorRadioItem = ({
-  name,
-  value,
-  isChecked,
-  image,
-  alt,
-  utilClassNames,
-  onClick,
-  ...restProps
-}) => {
+const ColorRadioItem = ({ image, alt, utilClassNames, ...restProps }) => {
   const classNames = cls('color-radio__item', {
     [`${utilClassNames}`]: utilClassNames,
   })
@@ -17,13 +8,7 @@ const ColorRadioItem = ({
   return (
     <div className={classNames}>
       <label>
-        <input
-          type='radio'
-          name={name}
-          value={value}
-          defaultChecked={isChecked}
-          onClick={onClick}
-        />
+        <input type='radio' {...restProps} />
         <img className='color-radio__item-image' src={image} alt={alt} />
       </label>
     </div>

@@ -1,11 +1,9 @@
 import React, { useLayoutEffect, useRef, useEffect, useState } from 'react'
 import { useGLTF, useTexture } from '@react-three/drei'
-import { useLoader } from '@react-three/fiber'
 import { LinearEncoding } from 'three'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import * as THREE from 'three'
 
-export const Cup = ({ selectedMaterial, selectedGlaze }) => {
+export const Cup = ({ clay, glaze }) => {
   const { nodes } = useGLTF('./models/Model_Cup-transformed.glb')
   const ref = useRef()
 
@@ -15,7 +13,7 @@ export const Cup = ({ selectedMaterial, selectedGlaze }) => {
     displacementMap: './textures/clay_spreckled/gravel_concrete_disp_1k.jpg',
     aoMap: './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
     roughnessMap: './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
-    // metalnessMap: './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
+    metalnessMap: './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
   })
 
   const basicBeige = useTexture({
@@ -24,7 +22,7 @@ export const Cup = ({ selectedMaterial, selectedGlaze }) => {
     displacementMap: './textures/clay_basic/clay_floor_001_disp_1k.jpg',
     aoMap: './textures/clay_basic/clay_floor_001_arm_1k.jpg',
     roughnessMap: './textures/clay_basic/clay_floor_001_arm_1k.jpg',
-    // metalnessMap: './textures/clay_basic/clay_floor_001_arm_1k.jpg',
+    metalnessMap: './textures/clay_basic/clay_floor_001_arm_1k.jpg',
   })
 
   const SRosaFelsB = useTexture({
@@ -51,62 +49,111 @@ export const Cup = ({ selectedMaterial, selectedGlaze }) => {
     roughnessMap: 'textures/s_hellblau_cj/S_Hellblau_CJ_Roughness.png',
   })
 
-  const [props, setProps] = useState(basicBeige)
+  const createNewMaterial = () => {
+    let materialTexture
 
-  useEffect(() => {
-    switch (selectedMaterial) {
-      case 'Spreckled Beige':
-        setProps(spreckledBeige)
-        ref.current.material.needsUpdate = true
-        break
+    switch (clay) {
       case 'Basic Beige':
-        setProps(basicBeige)
-        ref.current.material.needsUpdate = true
+        materialTexture = basicBeige
+        break
+      case 'Spreckled Beige':
+        materialTexture = spreckledBeige
         break
       default:
-        null
+        break
     }
-  }, [selectedMaterial])
+
+    const newMaterial = new THREE.MeshStandardMaterial({
+      map: materialTexture.colorMap,
+      opacity: 1,
+      normalMap: materialTexture.normalMap,
+      displacementMap: materialTexture.displacementMap,
+      displacementScale: 0.001,
+      aoMap: materialTexture.aoMap,
+      roughnessMap: materialTexture.roughnessMap,
+      // metalnessMap: materialTexture.metalnessMap,
+      normalMapType: LinearEncoding,
+    })
+
+    // materialTexture.colorMap.repeat.set(3, 3)
+    // materialTexture.normalMap.repeat.set(3, 3)
+    // materialTexture.displacementMap.repeat.set(3, 3)
+    // materialTexture.aoMap.repeat.set(3, 3)
+    // materialTexture.roughnessMap.repeat.set(3, 3)
+
+    // materialTexture.colorMap.wrapS = materialTexture.colorMap.wrapT =
+    //   THREE.RepeatWrapping
+    // materialTexture.normalMap.wrapS = materialTexture.normalMap.wrapT =
+    //   THREE.RepeatWrapping
+    // materialTexture.displacementMap.wrapS =
+    //   materialTexture.displacementMap.wrapT = THREE.RepeatWrapping
+    // materialTexture.aoMap.wrapS = materialTexture.aoMap.wrapT =
+    //   THREE.RepeatWrapping
+    // materialTexture.roughnessMap.wrapS = materialTexture.roughnessMap.wrapT =
+    //   THREE.RepeatWrapping
+
+    return newMaterial
+  }
 
   useEffect(() => {
-    switch (selectedGlaze) {
+    if (clay) {
+      const material = createNewMaterial()
+
+      // console.log(material)
+
+      // console.log(ref.current.material)
+
+      ref.current.material.map = material.map
+      ref.current.material.normalMap = material.normalMap
+      ref.current.material.displacementMap = material.displacementMap
+      ref.current.material.aoMap = material.aoMap
+      ref.current.material.roughnessMap = material.roughnessMap
+    }
+  }, [clay])
+
+  /*useEffect(() => {
+    switch (glaze) {
       case 'Keine Glasur':
-        setProps(basicBeige)
+        setMaterial(basicBeige)
         ref.current.material.needsUpdate = true
         break
       case '9864 Rosa Fels (B)':
-        setProps(SRosaFelsB)
+        setMaterial(SRosaFelsB)
         ref.current.material.needsUpdate = true
         break
       case '9867 Patina (B)':
-        setProps(SPatinaB)
+        setMaterial(SPatinaB)
         ref.current.material.needsUpdate = true
         break
       case '1253a Hellblau (CJ)':
-        setProps(SHellblauCJ)
+        setMaterial(SHellblauCJ)
         ref.current.material.needsUpdate = true
         break
       default:
         null
     }
-  }, [selectedGlaze])
+  }, [glaze])*/
 
   return (
     <>
-      <group dispose={null}>
-        <mesh geometry={nodes.Cylinder.geometry} castShadow ref={ref}>
-          <meshStandardMaterial
-            map={props.colorMap}
-            color={undefined}
-            // normalMap={props.normalMap}
-            // displacementMap={props.displacementMap}
-            // displacementScale={0.002}
-            // aoMap={props.aoMap}
-            // roughnessMap={props.roughnessMap}
-            // metalnessMap={props.metalnessMap}
-            // normalMapType={LinearEncoding}
-          />
-        </mesh>
+      <group>
+        <mesh
+          geometry={nodes.Cylinder.geometry}
+          castShadow
+          ref={ref}
+          material={createNewMaterial()}
+        />
+        {/* <meshStandardMaterial
+            map={material.colorMap}
+            opacity={1}
+            normalMap={material.normalMap}
+            displacementMap={material.displacementMap}
+            displacementScale={0.001}
+            aoMap={material.aoMap}
+            roughnessMap={material.roughnessMap}
+            // metalnessMap={material.metalnessMap}
+            normalMapType={LinearEncoding}
+          /> */}
       </group>
     </>
   )
