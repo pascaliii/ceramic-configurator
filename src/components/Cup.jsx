@@ -63,7 +63,22 @@ export const Cup = ({ clay, glaze }) => {
         break
     }
 
+    switch (glaze) {
+      case '1253a Hellblau (CJ)':
+        materialTexture = SHellblauCJ
+        break
+      case '9867 Patina (B)':
+        materialTexture = SPatinaB
+        break
+      case '9864 Rosa Fels (B)':
+        materialTexture = SRosaFelsB
+        break
+      default:
+        break
+    }
+
     const newMaterial = new THREE.MeshStandardMaterial({
+      // blending: THREE.NoBlending,
       map: materialTexture.colorMap,
       opacity: 1,
       normalMap: materialTexture.normalMap,
@@ -72,21 +87,21 @@ export const Cup = ({ clay, glaze }) => {
       aoMap: materialTexture.aoMap,
       roughnessMap: materialTexture.roughnessMap,
       // metalnessMap: materialTexture.metalnessMap,
-      normalMapType: LinearEncoding,
+      // normalMapType: LinearEncoding,
     })
 
-    // materialTexture.colorMap.repeat.set(3, 3)
-    // materialTexture.normalMap.repeat.set(3, 3)
-    // materialTexture.displacementMap.repeat.set(3, 3)
-    // materialTexture.aoMap.repeat.set(3, 3)
-    // materialTexture.roughnessMap.repeat.set(3, 3)
+    // materialTexture.colorMap.repeat.set(1, 1)
+    // materialTexture.normalMap.repeat.set(1, 1)
+    // // materialTexture.displacementMap.repeat.set(1, 1)
+    // materialTexture.aoMap.repeat.set(1, 1)
+    // materialTexture.roughnessMap.repeat.set(1, 1)
 
     // materialTexture.colorMap.wrapS = materialTexture.colorMap.wrapT =
     //   THREE.RepeatWrapping
     // materialTexture.normalMap.wrapS = materialTexture.normalMap.wrapT =
     //   THREE.RepeatWrapping
-    // materialTexture.displacementMap.wrapS =
-    //   materialTexture.displacementMap.wrapT = THREE.RepeatWrapping
+    // // materialTexture.displacementMap.wrapS =
+    // //   materialTexture.displacementMap.wrapT = THREE.RepeatWrapping
     // materialTexture.aoMap.wrapS = materialTexture.aoMap.wrapT =
     //   THREE.RepeatWrapping
     // materialTexture.roughnessMap.wrapS = materialTexture.roughnessMap.wrapT =

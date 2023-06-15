@@ -8,7 +8,7 @@ import {
 import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { Vector3, MathUtils, sRGBEncoding } from 'three'
+import { Vector3, MathUtils, sRGBEncoding, ACESFilmicToneMapping } from 'three'
 
 import { Suspense, useState, useRef } from 'react'
 
@@ -53,9 +53,8 @@ const Configurator = () => {
         shadows
         id='canvas'
         gl={{ preserveDrawingBuffer: true }}
-        // onCreated={({ gl }) => {
-        //   gl.outputEncoding = sRGBEncoding
-        // }}
+        linear // Switch off automatic sRGB color space and gamma correction
+        // flat // Use THREE.NoToneMapping instead of THREE.ACESFilmicToneMapping
       >
         <Suspense fallback={null}>
           <PresentationControls
