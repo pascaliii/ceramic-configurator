@@ -8,7 +8,7 @@ import {
 import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { Vector3, MathUtils, sRGBEncoding, ACESFilmicToneMapping } from 'three'
+import { Vector3, MathUtils, LinearSRGBColorSpace } from 'three'
 
 import { Suspense, useState, useRef } from 'react'
 
@@ -60,9 +60,9 @@ const Configurator = () => {
           <PresentationControls
             speed={1.5}
             global
-            rotatio={[]}
+            // rotation={[0, 0, 0]}
             zoom={0.7}
-            polar={[-0.1, Math.PI / 4]}
+            polar={[-0.5, Math.PI / 2]}
           >
             <Stage
               preset='soft'
@@ -74,7 +74,7 @@ const Configurator = () => {
                 // colorblend: 0.5,
                 opacity: 0.5,
               }}
-              adjustCamera={2}
+              adjustCamera={1.5}
             >
               <Environment
                 background={false} // Whether to affect scene.background

@@ -77,7 +77,7 @@ export const Cup = ({ clay, glaze }) => {
         break
     }
 
-    const newMaterial = new THREE.MeshStandardMaterial({
+    const newMaterial = new THREE.MeshPhysicalMaterial({
       // blending: THREE.NoBlending,
       map: materialTexture.colorMap,
       opacity: 1,
@@ -88,8 +88,10 @@ export const Cup = ({ clay, glaze }) => {
       roughnessMap: materialTexture.roughnessMap,
       // metalnessMap: materialTexture.metalnessMap,
       // normalMapType: LinearEncoding,
+      // clearcoat: 1,
     })
 
+    // Texture Repeat nicht mehr notwenddig, wenn in Sampler erhöht
     // materialTexture.colorMap.repeat.set(1, 1)
     // materialTexture.normalMap.repeat.set(1, 1)
     // // materialTexture.displacementMap.repeat.set(1, 1)
@@ -157,6 +159,7 @@ export const Cup = ({ clay, glaze }) => {
           castShadow
           ref={ref}
           material={createNewMaterial()}
+          material-color='#CBE5DA'
         />
         {/* <meshStandardMaterial
             map={material.colorMap}
