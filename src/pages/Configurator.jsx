@@ -12,11 +12,12 @@ import { Vector3, MathUtils, LinearSRGBColorSpace } from 'three'
 
 import { Suspense, useState, useRef } from 'react'
 
+import { Cup } from '../components/Cup'
+
 import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
 import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
-import Cup from '../components/Cup'
-import BasicCup from '../components/BasicCup'
+import CupOld from '../components/CupOld'
 import LoadingScreen from '../components/LoadingScreen'
 
 import shinyGlazes from '../data/shinyGlazes.json'
@@ -36,7 +37,7 @@ function DownloadCanvasAsImage() {
 
 const Configurator = () => {
   const [glaze, setGlaze] = useState('Botz Transparent')
-  const [clay, setClay] = useState('Basic Beige')
+  const [clay, setClay] = useState('Spreckled Beige')
   const [start, setStart] = useState(false) // für Loading Screen
 
   const onGlazeOptionChange = (e) => {
@@ -83,7 +84,8 @@ const Configurator = () => {
                 path={'/static/'}
               />
               {/* <Cup clay={clay} glaze={glaze} /> */}
-              <BasicCup clay={clay} glaze={glaze} />
+              {/* <BasicCup clay={clay} glaze={glaze} /> */}
+              <Cup clay={clay} glaze={glaze} />
             </Stage>
           </PresentationControls>
         </Suspense>
