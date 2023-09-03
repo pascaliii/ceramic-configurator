@@ -8,12 +8,11 @@ export const Cup = ({ clay, glaze }) => {
   const ref = useRef()
 
   const spreckledBeige = useTexture({
-    colorMap: '/textures/clay_spreckled/gravel_concrete_diff_1k.jpg',
-    normalMap: './textures/clay_spreckled/gravel_concrete_nor_gl_1k.jpg',
-    displacementMap: './textures/clay_spreckled/gravel_concrete_disp_1k.jpg',
-    aoMap: './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
-    roughnessMap: './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
-    metalnessMap: './textures/clay_spreckled/gravel_concrete_ao_1k.jpg',
+    colorMap: '/textures/clay_spreckled/Clay_Spreckled_BaseColor.png',
+    normalMap: './textures/clay_spreckled/Clay_Spreckled_Normal.png',
+    displacementMap: './textures/clay_spreckled/Clay_Spreckled_Height.png',
+    aoMap: './textures/clay_spreckled/Clay_Spreckled_AmbientOcclusion.png',
+    roughnessMap: './textures/clay_spreckled/Clay_Spreckled_Roughness.png',
   })
 
   const basicBeige = useTexture({
@@ -22,7 +21,6 @@ export const Cup = ({ clay, glaze }) => {
     displacementMap: './textures/clay_basic/clay_floor_001_disp_1k.jpg',
     aoMap: './textures/clay_basic/clay_floor_001_arm_1k.jpg',
     roughnessMap: './textures/clay_basic/clay_floor_001_arm_1k.jpg',
-    metalnessMap: './textures/clay_basic/clay_floor_001_arm_1k.jpg',
   })
 
   const SRosaFelsB = useTexture({

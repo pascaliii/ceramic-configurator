@@ -16,6 +16,7 @@ import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
 import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import Cup from '../components/Cup'
+import BasicCup from '../components/BasicCup'
 import LoadingScreen from '../components/LoadingScreen'
 
 import shinyGlazes from '../data/shinyGlazes.json'
@@ -62,7 +63,7 @@ const Configurator = () => {
             global
             // rotation={[0, 0, 0]}
             zoom={0.7}
-            polar={[-0.5, Math.PI / 2]}
+            polar={[-1, Math.PI / 2]}
           >
             <Stage
               preset='soft'
@@ -81,7 +82,8 @@ const Configurator = () => {
                 files={'lebombo_1k.hdr'}
                 path={'/static/'}
               />
-              <Cup clay={clay} glaze={glaze} />
+              {/* <Cup clay={clay} glaze={glaze} /> */}
+              <BasicCup clay={clay} glaze={glaze} />
             </Stage>
           </PresentationControls>
         </Suspense>
