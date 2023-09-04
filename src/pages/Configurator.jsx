@@ -17,12 +17,12 @@ import { Cup } from '../components/Cup'
 import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
 import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
-import CupOld from '../components/CupOld'
 import LoadingScreen from '../components/LoadingScreen'
 
-import shinyGlazes from '../data/shinyGlazes.json'
-import mattGlazes from '../data/mattGlazes.json'
+import shinyGlazes from '../data/shinyGlazes'
+import mattGlazes from '../data/mattGlazes'
 import clays from '../data/clays'
+import parts from '../data/parts'
 
 function DownloadCanvasAsImage() {
   let downloadLink = document.createElement('a')
@@ -38,6 +38,7 @@ function DownloadCanvasAsImage() {
 const Configurator = () => {
   const [glaze, setGlaze] = useState('Botz Transparent')
   const [clay, setClay] = useState('Spreckled Beige')
+  const [part, setPart] = useState('full')
   const [start, setStart] = useState(false) // für Loading Screen
 
   const onGlazeOptionChange = (e) => {
@@ -46,6 +47,10 @@ const Configurator = () => {
 
   const onClayOptionChange = (e) => {
     setClay(e.target.value)
+  }
+
+  const onPartOptionChange = (e) => {
+    setPart(e.target.value)
   }
 
   return (
@@ -83,8 +88,6 @@ const Configurator = () => {
                 files={'lebombo_1k.hdr'}
                 path={'/static/'}
               />
-              {/* <Cup clay={clay} glaze={glaze} /> */}
-              {/* <BasicCup clay={clay} glaze={glaze} /> */}
               <Cup clay={clay} glaze={glaze} />
             </Stage>
           </PresentationControls>
@@ -107,17 +110,19 @@ const Configurator = () => {
             </div>
             <div className='sidebar__item'>
               <ColorRadio>
-                {clays.map((clay) => (
-                  <ColorRadioItem
-                    key={clay._id}
-                    name='clay'
-                    value={clay.value}
-                    image={clay.src}
-                    alt={clay.alt}
-                    defaultChecked={clay === clay.value}
-                    onClick={onClayOptionChange}
-                  />
-                ))}
+                {clays.map((clayItem) => {
+                  return (
+                    <ColorRadioItem
+                      key={clayItem._id}
+                      name='clayItem'
+                      value={clayItem.value}
+                      image={clayItem.src}
+                      alt={clayItem.alt}
+                      defaultChecked={clay === clayItem.value}
+                      onClick={onClayOptionChange}
+                    />
+                  )
+                })}
               </ColorRadio>
             </div>
             <div className='sidebar__headline-wrapper'>
@@ -127,27 +132,27 @@ const Configurator = () => {
             <div className='sidebar__item'>
               <form name='glazeParams' id='glazeParams'>
                 <ColorRadio>
-                  {shinyGlazes.map((glaze, index) => (
+                  {shinyGlazes.map((glazeItem, index) => (
                     <ColorRadioItem
                       key={index}
                       name='glaze'
-                      value={glaze.value}
-                      image={glaze.src}
-                      alt={glaze.alt}
-                      defaultChecked={glaze === glaze.value}
+                      value={glazeItem.value}
+                      image={glazeItem.src}
+                      alt={glazeItem.alt}
+                      defaultChecked={glaze === glazeItem.value}
                       onClick={onGlazeOptionChange}
                     />
                   ))}
                 </ColorRadio>
                 <ColorRadio>
-                  {mattGlazes.map((glaze, index) => (
+                  {mattGlazes.map((glazeItem, index) => (
                     <ColorRadioItem
                       key={index}
                       name='glaze'
-                      value={glaze.value}
-                      image={glaze.src}
-                      alt={glaze.alt}
-                      defaultChecked={glaze === glaze.value}
+                      value={glazeItem.value}
+                      image={glazeItem.src}
+                      alt={glazeItem.alt}
+                      defaultChecked={glaze === glazeItem.value}
                       onClick={onGlazeOptionChange}
                     />
                   ))}
@@ -156,35 +161,21 @@ const Configurator = () => {
             </div>
             <div className='sidebar__headline-wrapper'>
               <h3 className='sidebar__headline'>Parts of Glazing</h3>
-              <span className='sidebar__selection'>2/3</span>
+              <span className='sidebar__selection'>{part}</span>
             </div>
             <div className='sidebar__item'>
               <ColorRadio>
-                <ColorRadioItem
-                  name='glaze_parts'
-                  value='full'
-                  image='/glaze_parts/glaze_parts_full.svg'
-                  alt='Option 7'
-                  defaultChecked={true}
-                />
-                <ColorRadioItem
-                  name='glaze_parts'
-                  value='twothrid'
-                  image='/glaze_parts/glaze_parts_twothird.svg'
-                  alt='Option 7'
-                />
-                <ColorRadioItem
-                  name='glaze_parts'
-                  value='half'
-                  image='/glaze_parts/glaze_parts_half.svg'
-                  alt='Option 7'
-                />
-                <ColorRadioItem
-                  name='glaze_parts'
-                  value='inner'
-                  image='/glaze_parts/glaze_parts_onethird.svg'
-                  alt='Option 7'
-                />
+                {parts.map((partsItem, index) => (
+                  <ColorRadioItem
+                    key={index}
+                    name='parts'
+                    value={partsItem.value}
+                    image={partsItem.src}
+                    alt={partsItem.alt}
+                    defaultChecked={part === partsItem.value}
+                    onClick={onPartOptionChange}
+                  />
+                ))}
               </ColorRadio>
             </div>
           </div>

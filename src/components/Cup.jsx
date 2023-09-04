@@ -8,6 +8,7 @@ import { useGLTF } from '@react-three/drei'
 import{useLoader} from '@react-three/fiber'
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
+import clays from '../data/clays'
 
 export function Cup({ clay, glaze }) {
   const { nodes, materials } = useLoader(
@@ -16,86 +17,46 @@ export function Cup({ clay, glaze }) {
   )
   var textureLoader = new THREE.TextureLoader()
 
-  const createNewMaterial = () => {
+ const findSelectedMaterial = () =>{
+    const material = clays.find((item) => item.value === clay)
+    return material
+  }
+
+  const createNewMaterial = (material) => {
     let baseColor
     let height
     let normal
     let ao
     let roughness
 
+    if(material){
+      baseColor = textureLoader.load(material.baseColor)
+      height = textureLoader.load(material.height)
+      normal = textureLoader.load(material.normal)
+      ao = textureLoader.load(material.ao)
+      roughness = textureLoader.load(material.roughness)
 
-    switch (clay) {
-      case 'Basic Beige':
-        baseColor = textureLoader.load(
-          '../textures/clay_basic/Clay_Beige_BaseColor.png'
-        )
-         height = textureLoader.load(
-          '../textures/clay_basic/Clay_Beige_Height.png'
-        )
-         normal = textureLoader.load(
-          '../textures/clay_basic/Clay_Beige_Normal.png'
-        )
-         ao = textureLoader.load(
-          '../textures/clay_basic/Clay_Beige_AmbientOcclusion.png'
-        )
-         roughness = textureLoader.load(
-          '../textures/clay_basic/Clay_Beige_Roughness.png'
-        )
-        break
-      case 'Spreckled Beige':
-       baseColor = textureLoader.load(
-         '../textures/clay_spreckled/Clay_Spreckled_BaseColor.png'
-       )
-       height = textureLoader.load(
-         '../textures/clay_spreckled/Clay_Spreckled_Height.png'
-       )
-       normal = textureLoader.load(
-         '../textures/clay_spreckled/Clay_Spreckled_Normal.png'
-       )
-       ao = textureLoader.load(
-         '../textures/clay_spreckled/Clay_Spreckled_AmbientOcclusion.png'
-       )
-         roughness = textureLoader.load(
-         '../textures/clay_spreckled/Clay_Spreckled_Roughness.png'
-         )
-        break
-      default:
-        break
+      baseColor.repeat.set(1, 1)
+      height.repeat.set(1, 1)
+      normal.repeat.set(1, 1)
+      ao.repeat.set(1, 1)
+
+      baseColor.wrapS = baseColor.wrapT = THREE.RepeatWrapping
+      height.wrapS = height.wrapT = THREE.RepeatWrapping
+      normal.wrapS = normal.wrapT = THREE.RepeatWrapping
+      ao.wrapS = normal.wrapT = THREE.RepeatWrapping
+
+      materials.Material_Top.map = baseColor
+      materials.Material_Top.normalMap = normal
+      materials.Material_Top.displacementMap = height
+      materials.Material_Top.displacementScale = 0.00001
+      materials.Material_Top.aoMap = ao
     }
-
-       baseColor.repeat.set(1, 1)
-       height.repeat.set(1, 1)
-       normal.repeat.set(1, 1)
-       ao.repeat.set(1, 1)
-
-       baseColor.wrapS = baseColor.wrapT = THREE.RepeatWrapping
-       height.wrapS = height.wrapT = THREE.RepeatWrapping
-       normal.wrapS = normal.wrapT = THREE.RepeatWrapping
-       ao.wrapS = normal.wrapT = THREE.RepeatWrapping
-
-       materials.Material_Top.map = baseColor
-       materials.Material_Top.normalMap = normal
-       materials.Material_Top.displacementMap = height
-       materials.Material_Top.displacementScale = 0.00001
-       materials.Material_Top.aoMap = ao
-
-    // switch (glaze) {
-    //   case '1253a Hellblau (CJ)':
-    //     materialTexture = SHellblauCJ
-    //     break
-    //   case '9867 Patina (B)':
-    //     materialTexture = SPatinaB
-    //     break
-    //   case '9864 Rosa Fels (B)':
-    //     materialTexture = SRosaFelsB
-    //     break
-    //   default:
-    //     break
-    // }
   }
 
   useEffect((clay) => {
-      createNewMaterial()
+    const material = findSelectedMaterial()
+      createNewMaterial(material)
       materials.Material_Top.needsUpdate
   }, [clay])
 
