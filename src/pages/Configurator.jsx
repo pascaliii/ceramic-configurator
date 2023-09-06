@@ -13,6 +13,7 @@ import { Vector3, MathUtils, LinearSRGBColorSpace } from 'three'
 import { Suspense, useState, useRef } from 'react'
 
 import { Cup } from '../components/Cup'
+import { Bowl } from '../components/Bowl'
 
 import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
@@ -88,7 +89,8 @@ const Configurator = () => {
                 files={'lebombo_1k.hdr'}
                 path={'/static/'}
               />
-              <Cup clay={clay} glaze={glaze} />
+              {/* <Cup clay={clay} glaze={glaze} /> */}
+              <Bowl clay={clay} glaze={glaze} />
             </Stage>
           </PresentationControls>
         </Suspense>
