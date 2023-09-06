@@ -71,20 +71,20 @@ const Configurator = () => {
       >
         <Suspense fallback={null}>
           <PresentationControls
-            speed={1.5}
+            // speed={1.5}
             global
             // rotation={[0, 0, 0]}
-            zoom={0.7}
+            zoom={0.5}
             polar={[-1, Math.PI / 2]}
           >
             <Stage
               preset='soft'
-              intensity={0.2}
+              intensity={0}
               environment={null}
               shadows={{
                 type: 'accumulative',
                 color: '#f3f5f9',
-                // colorblend: 0.5,
+                colorblend: 0.5,
                 opacity: 0.5,
               }}
               adjustCamera={1.5}
