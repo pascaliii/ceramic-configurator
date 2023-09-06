@@ -38,9 +38,10 @@ function DownloadCanvasAsImage() {
 
 const Configurator = () => {
   const [glaze, setGlaze] = useState('Botz Transparent')
-  const [clay, setClay] = useState('Spreckled Beige')
+  const [clay, setClay] = useState('Basic Beige')
   const [part, setPart] = useState('full')
   const [start, setStart] = useState(false) // für Loading Screen
+  const [model, setModel] = useState('Cup')
 
   const onGlazeOptionChange = (e) => {
     setGlaze(e.target.value)
@@ -52,6 +53,10 @@ const Configurator = () => {
 
   const onPartOptionChange = (e) => {
     setPart(e.target.value)
+  }
+
+  const onModelChange = (model) => {
+    setModel(model)
   }
 
   return (
@@ -89,8 +94,8 @@ const Configurator = () => {
                 files={'lebombo_1k.hdr'}
                 path={'/static/'}
               />
-              {/* <Cup clay={clay} glaze={glaze} /> */}
-              <Bowl clay={clay} glaze={glaze} />
+              {model === 'Cup' && <Cup clay={clay} glaze={glaze} />}
+              {model === 'Bowl' && <Bowl clay={clay} glaze={glaze} />}
             </Stage>
           </PresentationControls>
         </Suspense>
@@ -104,7 +109,24 @@ const Configurator = () => {
               <h2 className='sidebar__headline'>Configuration Parameters</h2>
             </div>
             <div className='sidebar__item'>
-              Hier kommen die ausgewählten Informationen hin
+              <ColorRadio>
+                <ColorRadioItem
+                  name='model'
+                  value='Cup'
+                  image='/static/Cup.png'
+                  alt='Cup'
+                  defaultChecked={model === 'Cup'}
+                  onClick={() => onModelChange('Cup')}
+                />
+                <ColorRadioItem
+                  name='model'
+                  value='Bowl'
+                  image='/static/Bowl.png'
+                  alt='Bowl'
+                  defaultChecked={model === 'Bowl'}
+                  onClick={() => onModelChange('Bowl')}
+                />
+              </ColorRadio>
             </div>
             <div className='sidebar__headline-wrapper'>
               <h3 className='sidebar__headline'>Type of Clay</h3>
