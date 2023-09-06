@@ -2,15 +2,13 @@
 
 Ceramic Configurator with Three.js, React-Three-Fiber, React-Three-Drei & Vite
 
-## General
-
-### Install &  Start
+## Install
 
 ```
 yarn install
 ```
 
-### Start
+## Start
 ```
 yarn dev
 ```
