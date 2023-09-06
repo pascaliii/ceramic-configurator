@@ -205,7 +205,7 @@ const Configurator = () => {
           </div>
           <div className='sidebar__footer'>
             <Button label={'Save as image'} onClick={DownloadCanvasAsImage} />
-            <Button label={'View in VR'} outline />
+            <Button label={'View in AR'} outline />
           </div>
         </div>
       </div>
