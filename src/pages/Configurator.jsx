@@ -39,7 +39,7 @@ function DownloadCanvasAsImage() {
 const Configurator = () => {
   const [glaze, setGlaze] = useState('Botz Transparent')
   const [clay, setClay] = useState('Basic Beige')
-  const [part, setPart] = useState('full')
+  const [part, setPart] = useState('Completely glazed')
   const [start, setStart] = useState(false) // für Loading Screen
   const [model, setModel] = useState('Cup')
 
@@ -106,7 +106,8 @@ const Configurator = () => {
         <div className='sidebar'>
           <div className='sidebar__body'>
             <div className='sidebar__headline-wrapper'>
-              <h2 className='sidebar__headline'>Configuration Parameters</h2>
+              <h3 className='sidebar__headline'>Product</h3>
+              <span className='sidebar__selection'>{model}</span>
             </div>
             <div className='sidebar__item'>
               <ColorRadio>
