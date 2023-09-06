@@ -46,6 +46,24 @@ export function Cup({ clay, glaze }) {
       normal.wrapS = normal.wrapT = THREE.RepeatWrapping
       ao.wrapS = normal.wrapT = THREE.RepeatWrapping
 
+        // const newMaterial = new THREE.MeshPhysicalMaterial({
+        //   blending: THREE.NoBlending,
+        //   map: baseColor,
+        //   opacity: 1,
+        //   normalMap: normal,
+        //   displacementMap: height,
+        //   displacementScale: 0.00001,
+        //   aoMap: ao,
+        //   roughnessMap: roughness,
+        //   // normalMapType: THREE.LinearEncoding,
+        //   // clearcoat: 1,
+        //   // toneMapped:false
+        // })
+
+        // console.log('Ich lade ein Material')
+        // materials.Material_Top.needsUpdate
+        // materials.Material_Top = newMaterial
+
       materials.Material_Top.map = baseColor
       materials.Material_Top.normalMap = normal
       materials.Material_Top.displacementMap = height
@@ -57,7 +75,7 @@ export function Cup({ clay, glaze }) {
   useEffect((clay) => {
     const material = findSelectedMaterial()
       createNewMaterial(material)
-      materials.Material_Top.needsUpdate
+     materials.Material_Top.needsUpdate
   }, [clay])
 
   return (
