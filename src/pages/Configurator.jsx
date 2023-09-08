@@ -66,7 +66,7 @@ const Configurator = () => {
         shadows
         id='canvas'
         gl={{ preserveDrawingBuffer: true }}
-        linear // Switch off automatic sRGB color space and gamma correction
+        // linear // Switch off automatic sRGB color space and gamma correction
         // flat // Use THREE.NoToneMapping instead of THREE.ACESFilmicToneMapping
       >
         <Suspense fallback={null}>

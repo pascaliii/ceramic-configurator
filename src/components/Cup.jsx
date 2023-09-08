@@ -5,7 +5,7 @@ Command: npx gltfjsx@6.2.13 Model_Cup_2023_09_03.gltf -o Transformed_Model_Cup_2
 
 import React, { useEffect, useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
-import{useLoader} from '@react-three/fiber'
+import { useLoader } from '@react-three/fiber'
 import * as THREE from 'three'
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
 import clays from '../data/clays'
@@ -13,11 +13,11 @@ import clays from '../data/clays'
 export function Cup({ clay, glaze }) {
   const { nodes, materials } = useLoader(
     GLTFLoader,
-    './models/Model_Cup_2023_09_03.gltf'
+    './models/Model_Cup_2023_09_08.gltf'
   )
   var textureLoader = new THREE.TextureLoader()
 
- const findSelectedMaterial = () =>{
+  const findSelectedMaterial = () => {
     const material = clays.find((item) => item.value === clay)
     return material
   }
@@ -29,7 +29,7 @@ export function Cup({ clay, glaze }) {
     let ao
     let roughness
 
-    if(material){
+    if (material) {
       baseColor = textureLoader.load(material.baseColor)
       height = textureLoader.load(material.height)
       normal = textureLoader.load(material.normal)
@@ -46,23 +46,23 @@ export function Cup({ clay, glaze }) {
       normal.wrapS = normal.wrapT = THREE.RepeatWrapping
       ao.wrapS = normal.wrapT = THREE.RepeatWrapping
 
-        // const newMaterial = new THREE.MeshPhysicalMaterial({
-        //   blending: THREE.NoBlending,
-        //   map: baseColor,
-        //   opacity: 1,
-        //   normalMap: normal,
-        //   displacementMap: height,
-        //   displacementScale: 0.00001,
-        //   aoMap: ao,
-        //   roughnessMap: roughness,
-        //   // normalMapType: THREE.LinearEncoding,
-        //   // clearcoat: 1,
-        //   // toneMapped:false
-        // })
+      // const newMaterial = new THREE.MeshPhysicalMaterial({
+      //   blending: THREE.NoBlending,
+      //   map: baseColor,
+      //   opacity: 1,
+      //   normalMap: normal,
+      //   displacementMap: height,
+      //   displacementScale: 0.00001,
+      //   aoMap: ao,
+      //   roughnessMap: roughness,
+      //   // normalMapType: THREE.LinearEncoding,
+      //   // clearcoat: 1,
+      //   // toneMapped:false
+      // })
 
-        // console.log('Ich lade ein Material')
-        // materials.Material_Top.needsUpdate
-        // materials.Material_Top = newMaterial
+      // console.log('Ich lade ein Material')
+      // materials.Material_Top.needsUpdate
+      // materials.Material_Top = newMaterial
 
       materials.Material_Top.map = baseColor
       materials.Material_Top.normalMap = normal
@@ -72,37 +72,40 @@ export function Cup({ clay, glaze }) {
     }
   }
 
-  useEffect((clay) => {
-    const material = findSelectedMaterial()
+  useEffect(
+    (clay) => {
+      const material = findSelectedMaterial()
       createNewMaterial(material)
-     materials.Material_Top.needsUpdate
-  }, [clay])
+      materials.Material_Top.needsUpdate
+    },
+    [clay]
+  )
 
   return (
     <group dispose={null}>
+      <mesh geometry={nodes.Cup_1.geometry} material={materials.Material_Top} />
       <mesh
-        geometry={nodes.Cylinder001.geometry}
-        material={materials.Material_Top}
+        geometry={nodes.Cup_2.geometry}
+        material={materials.Material_Middle}
       />
       <mesh
-        geometry={nodes.Cylinder001_1.geometry}
-        material={materials.Material_Top}
+        geometry={nodes.Cup_3.geometry}
+        material={materials.Material_Base}
       />
       <mesh
-        geometry={nodes.Cylinder001_2.geometry}
-        material={materials.Material_Top}
+        geometry={nodes.Cup_4.geometry}
+        material={materials.Material_Bottom}
       />
       <mesh
-        geometry={nodes.Cylinder001_3.geometry}
-        material={materials.Material_Top}
-      />
-      <mesh
-        geometry={nodes.Cylinder001_4.geometry}
-        material={materials.Material_Top}
+        geometry={nodes.Cup_5.geometry}
+        material={materials.Material_Inner}
       />
     </group>
   )
 }
 
-useLoader.preload(GLTFLoader, './models/Model_Cup_2023_09_03.gltf' /* extensions */)
+useLoader.preload(
+  GLTFLoader,
+  './models/Model_Cup_2023_09_03.gltf' /* extensions */
+)
 // useGLTF.preload('./models/Model_Cup_2023_09_03.gltf')
