@@ -8,6 +8,11 @@
 @import './styles/components/card-product';
 @import './styles/components/card';
 @import './styles/components/loading-screen';
+@import './styles/components/header';
+@import './styles/components/input';
+@import './styles/components/formgroup';
+@import './styles/components/select';
+
 
 
 :root {
@@ -21,7 +26,8 @@
   --brp-4: 1024px;
   --brp-5: 1440px;
 }
-*{
+
+* {
     box-sizing: border-box;
 }
 
@@ -38,20 +44,6 @@ body {
     background-color: var(--color-background);
   
 }
-
-.title{
-    display: flex;
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 10px;
-    font-weight: 500;
-    color: var(--color-secondary-text);
-    text-transform: uppercase;
-    margin:0;
-    padding: 18px 24px;
-}
-
 
 
 .canvas{

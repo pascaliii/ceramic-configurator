@@ -1,10 +1,12 @@
 import './App.scss'
 import Configurator from './pages/Configurator'
+import GlazeOverview from './pages/GlazeOverview'
 
 function App() {
   return (
     <div className='app'>
-      <Configurator />
+      {/* <Configurator /> */}
+      <GlazeOverview />
     </div>
   )
 }

@@ -1,0 +1,26 @@
+.input{
+    $rootSelector: &;
+
+    height: 42px;
+    width: 100%;
+    border: 0.5px solid var(--color-border);
+    border-radius: 3px;
+    padding: 0 12px;
+
+    &__input-wrapper{
+        width: 100%;
+    }
+
+    ::placeholder{
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--color-secondary-text);
+    }
+
+    &:focus{
+        border-color: var(--color-primary);
+    }
+
+  
+    
+}

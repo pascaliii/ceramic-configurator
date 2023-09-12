@@ -19,6 +19,7 @@ import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
 import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import LoadingScreen from '../components/LoadingScreen'
+import Header from '../components/Header/Header'
 
 import shinyGlazes from '../data/shinyGlazes'
 import mattGlazes from '../data/mattGlazes'
@@ -61,7 +62,14 @@ const Configurator = () => {
 
   return (
     <>
-      <Canvas
+      <Header title='Pascale Schmidt Ceramics'>
+        <Header.Item href='/' active>
+          Configurator
+        </Header.Item>
+        <Header.Item href='/glazes'>Glazes</Header.Item>
+        <Header.Item href='/glazes'>How to?</Header.Item>
+      </Header>
+      {/* <Canvas
         className='canvas'
         shadows
         id='canvas'
@@ -99,14 +107,14 @@ const Configurator = () => {
             </Stage>
           </PresentationControls>
         </Suspense>
-      </Canvas>
-      <LoadingScreen started={start} onStarted={() => setStart(true)} />
-      <h1 className='title'>Pascale Schmidt - Ceramic Configurator</h1>
+      </Canvas> */}
+      {/* <LoadingScreen started={start} onStarted={() => setStart(true)} /> */}
+
       <div className='ui'>
         <div className='sidebar'>
           <div className='sidebar__body'>
             <div className='sidebar__headline-wrapper'>
-              <h3 className='sidebar__headline'>Product</h3>
+              <h3 className='sidebar__headline'>Ceramic Model</h3>
               <span className='sidebar__selection'>{model}</span>
             </div>
             <div className='sidebar__item'>

@@ -1,0 +1,23 @@
+.formgroup{
+  
+      &__label{
+        display: flex;
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--color-secondary-text);
+        text-transform: uppercase;
+        margin-bottom: 4px;
+    }
+
+    &__children-wrapper{
+          display: flex;
+        flex-direction: row;
+        > *{
+            margin-right: 4px;
+        }
+
+        :last-child{
+            margin: 0;
+        }
+    }
+}
