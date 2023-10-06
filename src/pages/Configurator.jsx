@@ -94,8 +94,12 @@ const Configurator = () => {
                 files={'lebombo_1k.hdr'}
                 path={'/static/'}
               />
-              {model === 'Cup' && <Cup clay={clay} glaze={glaze} />}
-              {model === 'Bowl' && <Bowl clay={clay} glaze={glaze} />}
+              {model === 'Cup' && (
+                <Cup clay={clay} glaze={glaze} glazePart={part} />
+              )}
+              {model === 'Bowl' && (
+                <Bowl clay={clay} glaze={glaze} glazePart={part} />
+              )}
             </Stage>
           </PresentationControls>
         </Suspense>
