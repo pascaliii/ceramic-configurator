@@ -83,7 +83,7 @@ const Configurator = () => {
             // speed={1.5}
             global
             // rotation={[0, 0, 0]}
-            zoom={0.5}
+            zoom={0.7}
             polar={[-1, Math.PI / 2]}
           >
             <Stage
@@ -96,7 +96,7 @@ const Configurator = () => {
                 colorblend: 0.5,
                 opacity: 0.5,
               }}
-              adjustCamera={1.5}
+              adjustCamera={model === 'Cup' ? 1.5 : 1}
             >
               <Environment
                 background={false} // Whether to affect scene.background
