@@ -23,8 +23,8 @@ export default [
   {
     _id: '4',
     name: 'parts',
-    value: 'No glaze',
+    value: 'No glaze selected',
     src: '/glaze_parts/glaze_parts_onethird.svg',
-    alt: 'No glaze',
+    alt: 'No glaze selected',
   }
 ]

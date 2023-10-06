@@ -13,7 +13,7 @@ import mattGlazes from '../data/mattGlazes'
 import shinyGlazes from '../data/shinyGlazes'
 
 export function Cup({ clay, glaze, glazePart }) {
-  const { nodes, materials } = useGLTF('./models/Model_Cup_2023_10_04.gltf')
+  const { nodes, materials } = useGLTF('./models/Cup.gltf')
 
   const findSelectedGlaze = () => {
     let glazeMaterial
@@ -37,35 +37,38 @@ export function Cup({ clay, glaze, glazePart }) {
     const glazeMaterial = findSelectedGlaze()
     let material
 
+    if (clay === 'Basic Beige') {
+      material = materials[glazeMaterial?.basic]
+      clay = materials[clayMaterial?.basic]
+    } else {
+      material = materials[glazeMaterial?.spreckled]
+      clay = materials[clayMaterial?.spreckled]
+    }
+
     switch (glazePart) {
       case 'Completely glazed':
-        if (clay === 'Basic Beige') {
-          material = materials[glazeMaterial?.basic]
-        } else {
-          material = materials[glazeMaterial?.spreckled]
-        }
 
         return (
           <>
             <mesh
               geometry={nodes.CupBase.geometry}
-              material={materials.Clay_Spreckled}
+              material={clay ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupInner.geometry}
-              material={material ?? materials.Clay_Spreckled}
+              material={material ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupTop.geometry}
-              material={material ?? materials.Clay_Spreckled}
+              material={material ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupMiddle.geometry}
-              material={material ?? materials.Clay_Spreckled}
+              material={material ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupBottom.geometry}
-              material={material ?? materials.Clay_Spreckled}
+              material={material ?? materials.Clay_Beige}
             />
           </>
         )
@@ -73,65 +76,85 @@ export function Cup({ clay, glaze, glazePart }) {
         break
 
       case 'Half glazed':
-        if (clay === 'Basic Beige') {
-          material = materials[glazeMaterial?.basic]
-        } else {
-          material = materials[glazeMaterial?.spreckled]
-        }
 
         return (
           <>
             <mesh
               geometry={nodes.CupBase.geometry}
-              material={materials.Clay_Spreckled}
+              material={clay ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupInner.geometry}
-              material={material ?? materials.Clay_Spreckled}
+              material={material ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupTop.geometry}
-              material={material ?? materials.Clay_Spreckled}
+              material={material ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupMiddle.geometry}
-              material={material ?? materials.Clay_Spreckled}
+              material={material ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupBottom.geometry}
-              material={materials.Clay_Spreckled}
+              material={clay ?? materials.Clay_Beige}
             />
-          </>)
-          break
+          </>
+        )
+        break
 
       case 'Only glazed inside':
-        if (clay === 'Basic Beige') {
-          material = materials[glazeMaterial?.basic]
-        } else {
-          material = materials[glazeMaterial?.spreckled]
-        }
 
         return (
           <>
             <mesh
               geometry={nodes.CupBase.geometry}
-              material={materials.Clay_Spreckled}
+              material={clay ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupInner.geometry}
-              material={material ?? materials.Clay_Spreckled}
+              material={material ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupTop.geometry}
-              material={materials.Clay_Spreckled}
+              material={clay ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupMiddle.geometry}
-              material={materials.Clay_Spreckled}
+              material={clay ?? materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupBottom.geometry}
-              material={materials.Clay_Spreckled}
+              material={clay ?? materials.Clay_Beige}
+            />
+          </>
+        )
+
+        break
+
+      case 'No glaze selected':
+
+        return (
+          <>
+            <mesh
+              geometry={nodes.CupBase.geometry}
+              material={clay ?? materials.Clay_Beige}
+            />
+            <mesh
+              geometry={nodes.CupInner.geometry}
+              material={clay ?? materials.Clay_Beige}
+            />
+            <mesh
+              geometry={nodes.CupTop.geometry}
+              material={clay ?? materials.Clay_Beige}
+            />
+            <mesh
+              geometry={nodes.CupMiddle.geometry}
+              material={clay ?? materials.Clay_Beige}
+            />
+            <mesh
+              geometry={nodes.CupBottom.geometry}
+              material={clay ?? materials.Clay_Beige}
             />
           </>
         )
@@ -143,23 +166,23 @@ export function Cup({ clay, glaze, glazePart }) {
           <>
             <mesh
               geometry={nodes.CupBase.geometry}
-              material={materials.Clay_Spreckled}
+              material={materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupInner.geometry}
-              material={materials.Clay_Spreckled}
+              material={materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupTop.geometry}
-              material={materials.Clay_Spreckled}
+              material={materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupMiddle.geometry}
-              material={materials.Clay_Spreckled}
+              material={materials.Clay_Beige}
             />
             <mesh
               geometry={nodes.CupBottom.geometry}
-              material={materials.Clay_Spreckled}
+              material={materials.Clay_Beige}
             />
           </>
         )
@@ -172,5 +195,5 @@ export function Cup({ clay, glaze, glazePart }) {
 
 useLoader.preload(
   GLTFLoader,
-  './models/Model_Cup_2023_10_04.gltf' /* extensions */
+  './models/Cup.gltf' /* extensions */
 )

@@ -37,14 +37,20 @@ function DownloadCanvasAsImage() {
 }
 
 const Configurator = () => {
-  const [glaze, setGlaze] = useState('Botz Transparent')
+  const [glaze, setGlaze] = useState('')
   const [clay, setClay] = useState('Basic Beige')
-  const [part, setPart] = useState('Completely glazed')
+  const [part, setPart] = useState('No glaze selected')
   const [start, setStart] = useState(false) // für Loading Screen
   const [model, setModel] = useState('Cup')
 
   const onGlazeOptionChange = (e) => {
     setGlaze(e.target.value)
+    console.log(e.target.value)
+    
+    if (glaze === '')
+    {
+    setPart('Completely glazed')
+    }
   }
 
   const onClayOptionChange = (e) => {
@@ -53,6 +59,9 @@ const Configurator = () => {
 
   const onPartOptionChange = (e) => {
     setPart(e.target.value)
+    if(part === 'No glaze selected'){
+      setGlaze('')
+    }
   }
 
   const onModelChange = (model) => {
@@ -168,7 +177,6 @@ const Configurator = () => {
                       value={glazeItem.value}
                       image={glazeItem.src}
                       alt={glazeItem.alt}
-                      defaultChecked={glaze === glazeItem.value}
                       onClick={onGlazeOptionChange}
                     />
                   ))}
@@ -181,7 +189,6 @@ const Configurator = () => {
                       value={glazeItem.value}
                       image={glazeItem.src}
                       alt={glazeItem.alt}
-                      defaultChecked={glaze === glazeItem.value}
                       onClick={onGlazeOptionChange}
                     />
                   ))}
