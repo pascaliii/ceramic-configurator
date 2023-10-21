@@ -2,11 +2,9 @@
 @import './styles/colors';
 
 @import './styles/components/sidebar';
-
+@import './styles/components/info-card';
 @import './styles/components/color-radio';
 @import './styles/components/button';
-@import './styles/components/card-product';
-@import './styles/components/card';
 @import './styles/components/loading-screen';
 
 
@@ -29,7 +27,7 @@
 body {
   margin: 0;
   display: flex;
-
+  overflow-x: hidden; 
 }
 
 .app{

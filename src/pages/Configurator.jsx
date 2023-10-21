@@ -16,6 +16,7 @@ import { Cup } from '../components/Cup'
 import { Bowl } from '../components/Bowl'
 
 import Button from '../components/Button'
+import InfoCard from '../components/InfoCard'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
 import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import LoadingScreen from '../components/LoadingScreen'
@@ -109,6 +110,7 @@ const Configurator = () => {
       </Canvas>
       <LoadingScreen started={start} onStarted={() => setStart(true)} />
       <h1 className='title'>Pascale Schmidt - Ceramic Configurator</h1>
+        <InfoCard label='Information'/>
       <div className='ui'>
         <div className='sidebar'>
           <div className='sidebar__body'>
@@ -181,6 +183,7 @@ const Configurator = () => {
                     <ColorRadioItem
                       key={index}
                       name='glaze'
+                      title='Ich bin eine Hover Nachricht'
                       value={glazeItem.value}
                       image={glazeItem.src}
                       alt={glazeItem.alt}

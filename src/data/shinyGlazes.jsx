@@ -5,7 +5,7 @@ export default [
     value: 'No glaze selected',
     basic: 'No glaze selected',
     spreckled: 'No glaze selected',
-    src: '/glaze_parts/glaze_parts_onethird.svg',
+    src: '/icons/noSelection.svg',
     alt: 'No glaze selected',
   },
   {
