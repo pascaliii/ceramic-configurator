@@ -37,20 +37,14 @@ function DownloadCanvasAsImage() {
 }
 
 const Configurator = () => {
-  const [glaze, setGlaze] = useState('')
+  const [glaze, setGlaze] = useState('No glaze selected')
   const [clay, setClay] = useState('Basic Beige')
-  const [part, setPart] = useState('No glaze selected')
+  const [part, setPart] = useState('Completely glazed')
   const [start, setStart] = useState(false) // für Loading Screen
   const [model, setModel] = useState('Cup')
 
   const onGlazeOptionChange = (e) => {
     setGlaze(e.target.value)
-    console.log(e.target.value)
-    
-    if (glaze === '')
-    {
-    setPart('Completely glazed')
-    }
   }
 
   const onClayOptionChange = (e) => {

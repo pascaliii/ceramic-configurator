@@ -19,12 +19,5 @@ export default [
     value: 'Only glazed inside',
     src: '/glaze_parts/glaze_parts_onethird.svg',
     alt: 'Only glazed inside',
-  },
-  {
-    _id: '4',
-    name: 'parts',
-    value: 'No glaze selected',
-    src: '/glaze_parts/glaze_parts_onethird.svg',
-    alt: 'No glaze selected',
   }
 ]

@@ -38,10 +38,18 @@ export function Bowl({ clay, glaze, glazePart }) {
     let material
 
     if (clay === 'Basic Beige') {
-      material = materials[glazeMaterial?.basic]
+      if(glazeMaterial === 'No glaze selected'){
+        material = materials[clayMaterial?.basic]
+      } else {
+        material = materials[glazeMaterial?.basic]
+      }
       clay = materials[clayMaterial?.basic]
     } else {
-      material = materials[glazeMaterial?.spreckled]
+      if(glazeMaterial === 'No glaze selected'){
+        material = materials[clayMaterial?.spreckled]
+      } else {
+        material = materials[glazeMaterial?.spreckled]
+      }
       clay = materials[clayMaterial?.spreckled]
     }
 
@@ -55,15 +63,15 @@ export function Bowl({ clay, glaze, glazePart }) {
             />
             <mesh
               geometry={nodes.BowlInner.geometry}
-              material={material ?? materials.Clay_Beige}
+              material={material ?? (clay ?? materials.Clay_Beige)}
             />
             <mesh
               geometry={nodes.BowlMiddle.geometry}
-              material={material ?? materials.Clay_Beige}
+              material={material ?? (clay ?? materials.Clay_Beige)}
             />
             <mesh
               geometry={nodes.BowlBottom.geometry}
-              material={material ?? materials.Clay_Beige}
+              material={material ?? (clay ?? materials.Clay_Beige)}
             />
           </>
         )
@@ -79,11 +87,11 @@ export function Bowl({ clay, glaze, glazePart }) {
             />
             <mesh
               geometry={nodes.BowlInner.geometry}
-              material={material ?? materials.Clay_Beige}
+              material={material ?? (clay ?? materials.Clay_Beige)}
             />
             <mesh
               geometry={nodes.BowlMiddle.geometry}
-              material={material ?? materials.Clay_Beige}
+              material={material ?? (clay ?? materials.Clay_Beige)}
             />
             <mesh
               geometry={nodes.BowlBottom.geometry}
@@ -102,31 +110,7 @@ export function Bowl({ clay, glaze, glazePart }) {
             />
             <mesh
               geometry={nodes.BowlInner.geometry}
-              material={material ?? materials.Clay_Beige}
-            />
-            <mesh
-              geometry={nodes.BowlMiddle.geometry}
-              material={clay ?? materials.Clay_Beige}
-            />
-            <mesh
-              geometry={nodes.BowlBottom.geometry}
-              material={clay ?? materials.Clay_Beige}
-            />
-          </>
-        )
-
-        break
-
-      case 'No glaze selected':
-        return (
-          <>
-            <mesh
-              geometry={nodes.BowlBase.geometry}
-              material={clay ?? materials.Clay_Beige}
-            />
-            <mesh
-              geometry={nodes.BowlInner.geometry}
-              material={clay ?? materials.Clay_Beige}
+              material={material ?? (clay ?? materials.Clay_Beige)}
             />
             <mesh
               geometry={nodes.BowlMiddle.geometry}
@@ -146,19 +130,19 @@ export function Bowl({ clay, glaze, glazePart }) {
           <>
             <mesh
               geometry={nodes.BowlBase.geometry}
-              material={materials.Clay_Beige}
+              material={(clay ?? materials.Clay_Beige)}
             />
             <mesh
               geometry={nodes.BowlInner.geometry}
-              material={materials.Clay_Beige}
+              material={(clay ?? materials.Clay_Beige)}
             />
             <mesh
               geometry={nodes.BowlMiddle.geometry}
-              material={materials.Clay_Beige}
+              material={(clay ?? materials.Clay_Beige)}
             />
             <mesh
               geometry={nodes.BowlBottom.geometry}
-              material={materials.Clay_Beige}
+              material={(clay ?? materials.Clay_Beige)}
             />
           </>
         )

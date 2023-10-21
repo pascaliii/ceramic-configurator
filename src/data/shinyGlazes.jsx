@@ -1,6 +1,14 @@
 export default [
   {
     _id: '1',
+    name: 'parts',
+    basic: 'No glaze selected',
+    spreckled: 'No glaze selected',
+    src: '/glaze_parts/glaze_parts_onethird.svg',
+    alt: 'No glaze selected',
+  },
+  {
+    _id: '2',
     name: 'glaze',
     value: '9102 Transparent (B)',
     basic: 'Transparent',
@@ -9,7 +17,7 @@ export default [
     alt: '9102 Transparent Botz',
   },
   {
-    _id: '2',
+    _id: '3',
     name: 'glaze',
     value: '1201 Pfefferminz (CJ)',
     basic: 'CJ_Pfefferminz_B',
@@ -18,7 +26,7 @@ export default [
     alt: '1201 Pfefferminz Carl Jäger',
   },
   {
-    _id: '3',
+    _id: '4',
     name: 'glaze',
     value: '1253a Hellblau (CJ)',
     basic: 'CJ_Hellblau_B',
