@@ -2,15 +2,10 @@ import {
   Stage,
   PresentationControls,
   Environment,
-  useTexture,
-  Loader,
 } from '@react-three/drei'
-import { Canvas, useThree, useFrame, useLoader } from '@react-three/fiber'
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
-import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader'
-import { Vector3, MathUtils, LinearSRGBColorSpace } from 'three'
+import { Canvas} from '@react-three/fiber'
 
-import { Suspense, useState, useRef } from 'react'
+import { Suspense, useState} from 'react'
 
 import { Cup } from '../components/Cup'
 import { Bowl } from '../components/Bowl'
@@ -110,7 +105,6 @@ const Configurator = () => {
       </Canvas>
       <LoadingScreen started={start} onStarted={() => setStart(true)} />
       <h1 className='title'>Pascale Schmidt - Ceramic Configurator</h1>
-        <InfoCard label='Information'/>
       <div className='ui'>
         <div className='sidebar'>
           <div className='sidebar__body'>
@@ -120,19 +114,21 @@ const Configurator = () => {
             </div>
             <div className='sidebar__item'>
               <ColorRadio>
-                <ColorRadioItem
-                  name='model'
-                  value='Cup'
-                  image='/static/Cup.png'
-                  alt='Cup'
-                  defaultChecked={model === 'Cup'}
-                  onClick={() => onModelChange('Cup')}
-                />
+                  <ColorRadioItem
+                    name='model'
+                    value='Cup'
+                    image='/static/Cup.png'
+                    alt='Cup'
+                    tooltip='Cup'
+                    defaultChecked={model === 'Cup'}
+                    onClick={() => onModelChange('Cup')}
+                  />
                 <ColorRadioItem
                   name='model'
                   value='Bowl'
                   image='/static/Bowl.png'
                   alt='Bowl'
+                  tooltip='Bowl'
                   defaultChecked={model === 'Bowl'}
                   onClick={() => onModelChange('Bowl')}
                 />
@@ -151,6 +147,7 @@ const Configurator = () => {
                       name='clayItem'
                       value={clayItem.value}
                       image={clayItem.src}
+                      tooltip={clayItem.alt}
                       alt={clayItem.alt}
                       defaultChecked={clay === clayItem.value}
                       onClick={onClayOptionChange}
@@ -171,6 +168,7 @@ const Configurator = () => {
                       key={index}
                       name='glaze'
                       value={glazeItem.value}
+                      tooltip={glazeItem.alt}
                       image={glazeItem.src}
                       alt={glazeItem.alt}
                       defaultChecked={glaze === glazeItem.value}
@@ -178,17 +176,18 @@ const Configurator = () => {
                     />
                   ))}
                 </ColorRadio>
+     
                 <ColorRadio>
                   {mattGlazes.map((glazeItem, index) => (
-                    <ColorRadioItem
-                      key={index}
-                      name='glaze'
-                      title='Ich bin eine Hover Nachricht'
-                      value={glazeItem.value}
-                      image={glazeItem.src}
-                      alt={glazeItem.alt}
-                      onClick={onGlazeOptionChange}
-                    />
+                        <ColorRadioItem
+                          key={index}
+                          name='glaze'
+                          value={glazeItem.value}
+                          image={glazeItem.src}
+                          alt={glazeItem.alt}
+                          tooltip={glazeItem.alt}
+                          onClick={onGlazeOptionChange}
+                        />
                   ))}
                 </ColorRadio>
               </form>
@@ -206,6 +205,7 @@ const Configurator = () => {
                     value={partsItem.value}
                     image={partsItem.src}
                     alt={partsItem.alt}
+                    tooltip={partsItem.alt}
                     defaultChecked={part === partsItem.value}
                     onClick={onPartOptionChange}
                   />
