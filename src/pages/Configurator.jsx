@@ -117,7 +117,7 @@ const Configurator = () => {
                   <ColorRadioItem
                     name='model'
                     value='Cup'
-                    image='/static/Cup.png'
+                    image='/static/Cup.webp'
                     alt='Cup'
                     tooltip='Cup'
                     defaultChecked={model === 'Cup'}
@@ -126,7 +126,7 @@ const Configurator = () => {
                 <ColorRadioItem
                   name='model'
                   value='Bowl'
-                  image='/static/Bowl.png'
+                  image='/static/Bowl.webp'
                   alt='Bowl'
                   tooltip='Bowl'
                   defaultChecked={model === 'Bowl'}
