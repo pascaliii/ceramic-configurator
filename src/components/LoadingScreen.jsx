@@ -22,7 +22,7 @@ export const LoadingScreen = ({ started, onStarted }) => {
           <p className='loading-screen__description'>
             This project is part of my master thesis in{' '}
             <strong>Digital Reality</strong> at{' '}
-            <strong>University of Applied Sciences Hamburg </strong>. <br /> I
+            <strong>University of Applied Sciences Hamburg</strong>. <br /> I
             used my technological knowledge to optimize the process of my hobby pottery. 
             This configurator helps me to decide which glazes would work with different shapes and on different clay types. 
             I created PBR materials that are
