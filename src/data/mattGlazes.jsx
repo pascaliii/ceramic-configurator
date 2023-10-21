@@ -5,7 +5,7 @@ export default [
     value: '9865 Eukalyptus (B)',
     basic: 'B_Eukalyptus_B',
     spreckled: 'B_Eukalyptus_B',
-    src: '/previews/Preview_B_Eukalyptus.png',
+    src: '/previews/Preview_B_Eukalyptus.webp',
     alt: '9865 Eukalyptus Botz',
   },
   {
@@ -14,7 +14,7 @@ export default [
     value: '9863 Vergissmeinnicht (B)',
     basic: 'B_Vergissmeinnicht_B',
     spreckled: 'B_Vergissmeinnicht_S',
-    src: '/previews/Preview_B_Vergisssmeinnicht.png',
+    src: '/previews/Preview_B_Vergisssmeinnicht.webp',
     alt: '9863 Vergissmeinnicht Botz',
   },
   {
@@ -23,7 +23,7 @@ export default [
     value: '9867 Patina (B)',
     basic: 'B_Patina_B',
     spreckled: 'B_Patina_S',
-    src: '/previews/Preview_B_Patina.png',
+    src: '/previews/Preview_B_Patina.webp',
     alt: '9867 Patina Botz',
   },
   {
@@ -32,7 +32,7 @@ export default [
     value: '9864 Rosa Fels (B)',
     basic: 'B_Rosa_Fels_B',
     spreckled: 'B_Rosa_Fels_S',
-    src: '/previews/Preview_B_Rosa_Fels.png',
+    src: '/previews/Preview_B_Rosa_Fels.webp',
     alt: '9864 Rosa Fels Botz',
   },
 ]

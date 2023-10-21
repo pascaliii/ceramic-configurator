@@ -14,7 +14,7 @@ export default [
     value: '9102 Transparent (B)',
     basic: 'Transparent',
     spreckled: 'Transparent_Spreckled',
-    src: '/previews/Preview_Transparent.png',
+    src: '/previews/Preview_Transparent.webp',
     alt: '9102 Transparent Botz',
   },
   {
@@ -23,7 +23,7 @@ export default [
     value: '1201 Pfefferminz (CJ)',
     basic: 'CJ_Pfefferminz_B',
     spreckled: 'CJ_Pfefferminz_S',
-    src: '/previews/Preview_CJ_Pfefferminz.png',
+    src: '/previews/Preview_CJ_Pfefferminz.webp',
     alt: '1201 Pfefferminz Carl Jäger',
   },
   {
@@ -32,7 +32,7 @@ export default [
     value: '1253a Hellblau (CJ)',
     basic: 'CJ_Hellblau_B',
     spreckled: 'CJ_Hellblau_S',
-    src: '/previews/Preview_CJ_Hellblau.png',
+    src: '/previews/Preview_CJ_Hellblau.webp',
     alt: '1253a Hellblau Carl Jäger',
   },
 ]
