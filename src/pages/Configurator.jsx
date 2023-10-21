@@ -109,7 +109,7 @@ const Configurator = () => {
         <div className='sidebar'>
           <div className='sidebar__body'>
             <div className='sidebar__headline-wrapper'>
-              <h3 className='sidebar__headline'>Product</h3>
+              <h2 className='sidebar__headline'>Product</h2>
               <span className='sidebar__selection'>{model}</span>
             </div>
             <div className='sidebar__item'>
@@ -135,7 +135,7 @@ const Configurator = () => {
               </ColorRadio>
             </div>
             <div className='sidebar__headline-wrapper'>
-              <h3 className='sidebar__headline'>Type of Clay</h3>
+              <h2 className='sidebar__headline'>Type of Clay</h2>
               <span className='sidebar__selection'>{clay}</span>
             </div>
             <div className='sidebar__item'>
@@ -157,7 +157,7 @@ const Configurator = () => {
               </ColorRadio>
             </div>
             <div className='sidebar__headline-wrapper'>
-              <h3 className='sidebar__headline'>Type of Glaze</h3>
+              <h2 className='sidebar__headline'>Type of Glaze</h2>
               <span className='sidebar__selection'>{glaze}</span>
             </div>
             <div className='sidebar__item'>
@@ -193,7 +193,7 @@ const Configurator = () => {
               </form>
             </div>
             <div className='sidebar__headline-wrapper'>
-              <h3 className='sidebar__headline'>Parts of Glazing</h3>
+              <h2 className='sidebar__headline'>Parts of Glazing</h2>
               <span className='sidebar__selection'>{part}</span>
             </div>
             <div className='sidebar__item'>
