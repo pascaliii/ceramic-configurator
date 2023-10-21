@@ -171,6 +171,7 @@ const Configurator = () => {
                       value={glazeItem.value}
                       image={glazeItem.src}
                       alt={glazeItem.alt}
+                      defaultChecked={glaze === glazeItem.value}
                       onClick={onGlazeOptionChange}
                     />
                   ))}
