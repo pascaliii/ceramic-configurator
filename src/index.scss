@@ -107,14 +107,18 @@ body {
     .canvas{
     z-index: 999;
     width: 80% !important;
-}
+  }
+
+  .loader-wrapper{
+    width: 80% !important;
+  }
 }
 
 .loader-wrapper{
   position: absolute;
     top: 0;
     left: 0;
-    width: 80% !important;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
