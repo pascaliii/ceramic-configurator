@@ -108,7 +108,7 @@ const Configurator = () => {
       </Canvas>
       {!start && <LoadingScreen started={start} onStarted={() => setStart(true)} />}
       {progress < 100 && <div className='loader-wrapper'><div className='loader'></div></div>}
-      <h1 className='title'>Pascale Schmidt - Ceramic Configurator</h1>
+      <h1 className='title'>PascaleSchmidtCeramics - Configurator</h1>
       <div className='ui'>
         <div className='sidebar'>
           <div className='sidebar__body'>
