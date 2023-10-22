@@ -2,6 +2,7 @@ import {
   Stage,
   PresentationControls,
   Environment,
+  useProgress,
 } from '@react-three/drei'
 import { Canvas} from '@react-three/fiber'
 
@@ -11,7 +12,6 @@ import { Cup } from '../components/Cup'
 import { Bowl } from '../components/Bowl'
 
 import Button from '../components/Button'
-import InfoCard from '../components/InfoCard'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
 import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import LoadingScreen from '../components/LoadingScreen'
@@ -20,6 +20,8 @@ import shinyGlazes from '../data/shinyGlazes'
 import mattGlazes from '../data/mattGlazes'
 import clays from '../data/clays'
 import parts from '../data/parts'
+
+
 
 function DownloadCanvasAsImage() {
   let downloadLink = document.createElement('a')
@@ -38,6 +40,7 @@ const Configurator = () => {
   const [part, setPart] = useState('Completely glazed')
   const [start, setStart] = useState(false) // für Loading Screen
   const [model, setModel] = useState('Cup')
+  const { progress } = useProgress()
 
   const onGlazeOptionChange = (e) => {
     setGlaze(e.target.value)
@@ -103,7 +106,8 @@ const Configurator = () => {
           </PresentationControls>
         </Suspense>
       </Canvas>
-      <LoadingScreen started={start} onStarted={() => setStart(true)} />
+      {!start && <LoadingScreen started={start} onStarted={() => setStart(true)} />}
+      {progress < 100 && <div className='loader-wrapper'><div className='loader'></div></div>}
       <h1 className='title'>Pascale Schmidt - Ceramic Configurator</h1>
       <div className='ui'>
         <div className='sidebar'>
@@ -215,7 +219,7 @@ const Configurator = () => {
           </div>
           <div className='sidebar__footer'>
             <Button label={'Save as image'} onClick={DownloadCanvasAsImage} />
-            <Button label={'View in AR'} outline />
+            {/* <Button label={'View in AR'} outline /> */}
           </div>
         </div>
       </div>

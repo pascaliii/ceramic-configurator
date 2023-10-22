@@ -1,4 +1,3 @@
-import './App.scss'
 import Configurator from './pages/Configurator'
 
 function App() {
