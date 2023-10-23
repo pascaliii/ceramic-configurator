@@ -1,6 +1,6 @@
 # Ceramic Configurator
 
-This Ceramic Configurator is the technical part of my master thesis. 
+This Ceramic Configurator is the project of my master thesis. 
 It is created with React, Three.js, React-Three-Fiber, React-Three-Drei & Vite.
 
 The glazes where made with Adobe 3D Sampler from pictures of the real glazes of the glaze companies Botz and Carl Jäger. 
