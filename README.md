@@ -10,7 +10,8 @@ The 3D Models where created in Blender. Due to some issues with ReactThreeFiber 
 Checkout the project on my website: [config.pascaleschmidtceramics.de](https://config.pascaleschmidtceramics.de/)
 
 ## Preview
-<img width="1024" alt="Configuration: Spreckled Clay and Peppermint glaze" src="https://github.com/pascaliii/ceramic-configurator/assets/32701818/f6493e33-0509-4178-bb10-d9f2d94bb960">
+![Configuration with spreckled clay and peppermint glaze](https://github.com/pascaliii/ceramic-configurator/blob/main/public/Screenshot_1.png?raw=true)
+
 
 
 ## Install
