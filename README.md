@@ -1,6 +1,18 @@
 # Ceramic Configurator
 
-Ceramic Configurator with Three.js, React-Three-Fiber, React-Three-Drei & Vite
+This Ceramic Configurator is the project of my master thesis. 
+It is created with React, Three.js, React-Three-Fiber, React-Three-Drei & Vite.
+
+The glazes where made with Adobe 3D Sampler from pictures of the real glazes of the glaze companies Botz and Carl Jäger. 
+
+The 3D Models where created in Blender. Due to some issues with ReactThreeFiber (https://github.com/pmndrs/react-three-fiber/discussions/3002#discussion-5608250) the glazes where applied inside Blender aswell and just switched in React. 
+
+Checkout the project on my website: [config.pascaleschmidtceramics.de](https://config.pascaleschmidtceramics.de/)
+
+## Preview
+![Configuration with spreckled clay and peppermint glaze](https://github.com/pascaliii/ceramic-configurator/blob/main/public/Screenshot_1.png?raw=true)
+
+
 
 ## Install
 
