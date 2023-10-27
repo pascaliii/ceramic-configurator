@@ -108,6 +108,7 @@ const Configurator = () => {
       </Canvas>
       {!start && <LoadingScreen started={start} onStarted={() => setStart(true)} />}
       {progress < 100 && <div className='loader-wrapper'><div className='loader'></div></div>}
+      {start && <>
       <h1 className='title'>PascaleSchmidtCeramics - Configurator</h1>
       <div className='ui'>
         <div className='sidebar'>
@@ -222,8 +223,9 @@ const Configurator = () => {
             {/* <Button label={'View in AR'} outline /> */}
           </div>
         </div>
-      </div>
+      </div></>}
     </>
+      
   )
 }
 

@@ -19,7 +19,7 @@ const Button = ({
   })
 
   return (
-    <button className={classNames} onClick={onClick} {...restProps}>
+    <button className={classNames} onClick={onClick} disabled={disabled} {...restProps}>
       {label}
     </button>
   )
