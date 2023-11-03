@@ -1,14 +1,5 @@
 export default [
   {
-    _id: '2',
-    name: 'glaze',
-    value: '9865 Eukalyptus (B)',
-    basic: 'B_Eukalyptus_B',
-    spreckled: 'B_Eukalyptus_B',
-    src: '/previews/Preview_B_Eukalyptus.webp',
-    alt: '9865 Eukalyptus Botz',
-  },
-  {
     _id: '3',
     name: 'glaze',
     value: '9863 Vergissmeinnicht (B)',

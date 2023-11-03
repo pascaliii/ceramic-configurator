@@ -13,8 +13,8 @@ import { Bowl } from '../components/Bowl'
 
 import Button from '../components/Button'
 import ColorRadio from '../components/ColorRadio/ColorRadio'
-import ColorRadioItem from '../components/ColorRadio/ColorRadioItem'
 import LoadingScreen from '../components/LoadingScreen'
+import Selection from '../components/Selection/Selection'
 
 import shinyGlazes from '../data/shinyGlazes'
 import mattGlazes from '../data/mattGlazes'
@@ -26,9 +26,9 @@ import parts from '../data/parts'
 function DownloadCanvasAsImage() {
   let downloadLink = document.createElement('a')
   downloadLink.setAttribute('download', 'MyConfiguration.png')
-  let canvas = document.getElementById('canvas')?.childNodes[0].childNodes[0]
+  let screen = document.getElementById('screen')?.childNodes[0].childNodes[0]
 
-  let dataURL = canvas.toDataURL('image/png')
+  let dataURL = screen.toDataURL('image/png')
   let url = dataURL.replace(/^data:image\/png/, 'data:application/octet-stream')
   downloadLink.setAttribute('href', url)
   downloadLink.click()
@@ -108,6 +108,24 @@ const Configurator = () => {
       </Canvas>
       {!start && <LoadingScreen started={start} onStarted={() => setStart(true)} />}
       {progress < 100 && <div className='loader-wrapper'><div className='loader'></div></div>}
+      <Selection headline='My Configuration'>
+        <Selection.Item icon='cup'>{model}</Selection.Item>
+        <Selection.Item icon='ruler'>13cm x 13cm x 5cm</Selection.Item>
+        <Selection.Space />
+        {glaze !== 'No glaze selected' && 
+          <>
+            <Selection.Item icon='clay'>{clay}</Selection.Item>
+            <Selection.Item icon='brush'>{glaze}</Selection.Item>
+            <Selection.Space />
+            <Selection.Item icon='fire'>Oxidative</Selection.Item>
+            <Selection.Item icon='temperature'>1250°C</Selection.Item>
+            <Selection.Space />
+            <Selection.Item icon='foodsafe'>Food safe</Selection.Item>
+            <Selection.Item icon='cracks'>Crackling</Selection.Item>
+            <Selection.Item icon='waterdrop'>Tends to run</Selection.Item>
+          </>
+        }
+      </Selection>
       {start && <>
       <h1 className='title'>PascaleSchmidtCeramics - Configurator</h1>
       <div className='ui'>
@@ -119,7 +137,7 @@ const Configurator = () => {
             </div>
             <div className='sidebar__item'>
               <ColorRadio>
-                  <ColorRadioItem
+                  <ColorRadio.Item
                     name='model'
                     value='Cup'
                     image='/static/Cup.webp'
@@ -128,7 +146,7 @@ const Configurator = () => {
                     defaultChecked={model === 'Cup'}
                     onClick={() => onModelChange('Cup')}
                   />
-                <ColorRadioItem
+                <ColorRadio.Item
                   name='model'
                   value='Bowl'
                   image='/static/Bowl.webp'
@@ -147,7 +165,7 @@ const Configurator = () => {
               <ColorRadio>
                 {clays.map((clayItem) => {
                   return (
-                    <ColorRadioItem
+                    <ColorRadio.Item
                       key={clayItem._id}
                       name='clayItem'
                       value={clayItem.value}
@@ -169,7 +187,7 @@ const Configurator = () => {
               <form name='glazeParams' id='glazeParams'>
                 <ColorRadio>
                   {shinyGlazes.map((glazeItem, index) => (
-                    <ColorRadioItem
+                    <ColorRadio.Item
                       key={index}
                       name='glaze'
                       value={glazeItem.value}
@@ -184,7 +202,7 @@ const Configurator = () => {
      
                 <ColorRadio>
                   {mattGlazes.map((glazeItem, index) => (
-                        <ColorRadioItem
+                        <ColorRadio.Item
                           key={index}
                           name='glaze'
                           value={glazeItem.value}
@@ -204,7 +222,7 @@ const Configurator = () => {
             <div className='sidebar__item'>
               <ColorRadio>
                 {parts.map((partsItem, index) => (
-                  <ColorRadioItem
+                  <ColorRadio.Item
                     key={index}
                     name='parts'
                     value={partsItem.value}
