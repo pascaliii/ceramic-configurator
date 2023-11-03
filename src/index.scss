@@ -64,6 +64,34 @@ body {
 
 }
 
+.error__screen{
+
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  gap: 32px;
+  background-color: rgba(255, 210, 179, 0.8);
+  font-size: 32px; 
+  font-weight: 700;
+  overflow: hidden; 
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+
+  
+}
+
+.error__image{
+  width:100%;
+  
+   svg{
+    height: 58px;
+   }
+}
+
+
+
 
 // Scrollbar
 
@@ -111,6 +139,22 @@ body {
 
   .loader-wrapper{
     width: 80% !important;
+  }
+
+  .error__screen{
+    height: 100vh;
+    font-size: 58px;
+    padding: 128px;
+
+    
+  }
+
+  .error__image{
+    width:100%;
+    
+     svg{
+      height: 128px;
+     }
   }
 }
 

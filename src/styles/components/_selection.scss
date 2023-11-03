@@ -1,7 +1,7 @@
 .selection{
     $rootSelector: &; 
 
-    display: flex;
+    display: none;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -41,5 +41,11 @@
 
     &__space{
         padding: 4px;
+    }
+}
+
+@media only screen and (min-width: 1024px) {
+    .selection{
+        display: flex; 
     }
 }

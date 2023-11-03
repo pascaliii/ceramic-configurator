@@ -21,6 +21,7 @@ import mattGlazes from '../data/mattGlazes'
 import clays from '../data/clays'
 import parts from '../data/parts'
 
+import {GLAZE_PROPERTY_FOODSAFE, MODEL_DIMENSIONS, GLAZE_PROPERTY_CRACKLING, GLAZE_PROPERTY_TENDSTORUN}  from '../data/data'
 
 
 function DownloadCanvasAsImage() {
@@ -40,9 +41,16 @@ const Configurator = () => {
   const [part, setPart] = useState('Completely glazed')
   const [start, setStart] = useState(false) // für Loading Screen
   const [model, setModel] = useState('Cup')
+  const [foodsafe, setFoodsafe] = useState(false)
+  const [crackling, setCrackling] = useState(false)
+  const [tendsToRun, setTendsToRun] = useState(false)
   const { progress } = useProgress()
 
+  // Firefox 1.0+
+var isFirefox = typeof InstallTrigger !== 'undefined';
+
   const onGlazeOptionChange = (e) => {
+    handleProperties(e.target.value)
     setGlaze(e.target.value)
   }
 
@@ -61,8 +69,18 @@ const Configurator = () => {
     setModel(model)
   }
 
+  const handleProperties = (value) => {
+    setFoodsafe(GLAZE_PROPERTY_FOODSAFE[value])
+    setCrackling(GLAZE_PROPERTY_CRACKLING[value])
+    setTendsToRun(GLAZE_PROPERTY_TENDSTORUN[value])
+  }
+
+  if(isFirefox){
+    return (<div className='error__screen'><div className='error__image'> <svg><use href={`/sprite.svg#smiley-sad`} xlinkHref={`/sprite.svg#smiley-sad`}></use></svg></div>Sorry, but the Configurator is currently not working in Firefox, please use a different browser (e.g. Chrome, Safari, Opera, Edge, ...)</div>)
+  }
+
   return (
-    <>
+      <>
       <Canvas
         className='canvas'
         shadows
@@ -110,7 +128,7 @@ const Configurator = () => {
       {progress < 100 && <div className='loader-wrapper'><div className='loader'></div></div>}
       <Selection headline='My Configuration'>
         <Selection.Item icon='cup'>{model}</Selection.Item>
-        <Selection.Item icon='ruler'>13cm x 13cm x 5cm</Selection.Item>
+        <Selection.Item icon='ruler'>{MODEL_DIMENSIONS[model]}</Selection.Item>
         <Selection.Space />
         {glaze !== 'No glaze selected' && 
           <>
@@ -120,9 +138,9 @@ const Configurator = () => {
             <Selection.Item icon='fire'>Oxidative</Selection.Item>
             <Selection.Item icon='temperature'>1250°C</Selection.Item>
             <Selection.Space />
-            <Selection.Item icon='foodsafe'>Food safe</Selection.Item>
-            <Selection.Item icon='cracks'>Crackling</Selection.Item>
-            <Selection.Item icon='waterdrop'>Tends to run</Selection.Item>
+            {foodsafe && <Selection.Item icon='foodsafe'>Food safe</Selection.Item>}
+            {crackling && <Selection.Item icon='cracks'>Crackling</Selection.Item>}
+            {tendsToRun && <Selection.Item icon='waterdrop'>Tends to run</Selection.Item>}
           </>
         }
       </Selection>
