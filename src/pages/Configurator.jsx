@@ -27,7 +27,7 @@ import {GLAZE_PROPERTY_FOODSAFE, MODEL_DIMENSIONS, GLAZE_PROPERTY_CRACKLING, GLA
 function DownloadCanvasAsImage() {
   let downloadLink = document.createElement('a')
   downloadLink.setAttribute('download', 'MyConfiguration.png')
-  let screen = document.getElementById('screen')?.childNodes[0].childNodes[0]
+  let screen = document.getElementById('canvas')?.childNodes[0].childNodes[0]
 
   let dataURL = screen.toDataURL('image/png')
   let url = dataURL.replace(/^data:image\/png/, 'data:application/octet-stream')
@@ -256,7 +256,7 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
           </div>
           <div className='sidebar__footer'>
             <Button label={'Save as image'} onClick={DownloadCanvasAsImage} />
-            {/* <Button label={'View in AR'} outline /> */}
+            <Button label={'View in AR'} outline />
           </div>
         </div>
       </div></>}
