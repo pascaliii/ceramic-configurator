@@ -256,7 +256,7 @@ var isFirefox = typeof InstallTrigger !== 'undefined';
           </div>
           <div className='sidebar__footer'>
             <Button label={'Save as image'} onClick={DownloadCanvasAsImage} />
-            <Button label={'View in AR'} outline />
+            {/* <Button label={'View in AR'} outline /> */}
           </div>
         </div>
       </div></>}
