@@ -1,4 +1,6 @@
-export default [
+import type { GlazeItem } from '../types'
+
+const shinyGlazes: GlazeItem[] = [
   {
     _id: '1',
     name: 'parts',
@@ -36,3 +38,5 @@ export default [
     alt: '1253a Hellblau Carl Jäger',
   },
 ]
+
+export default shinyGlazes

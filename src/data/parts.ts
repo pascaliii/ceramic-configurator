@@ -1,4 +1,6 @@
-export default [
+import type { PartItem } from '../types'
+
+const parts: PartItem[] = [
   {
     _id: '1',
     name: 'parts',
@@ -19,5 +21,7 @@ export default [
     value: 'Only glazed inside',
     src: '/icons/glazedInside.svg',
     alt: 'Only glazed inside',
-  }
+  },
 ]
+
+export default parts

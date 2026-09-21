@@ -1,4 +1,6 @@
-export default [
+import type { GlazeItem } from '../types'
+
+const mattGlazes: GlazeItem[] = [
   {
     _id: '3',
     name: 'glaze',
@@ -18,7 +20,7 @@ export default [
     alt: '9867 Patina Botz',
   },
   {
-    _id: '4',
+    _id: '5',
     name: 'glaze',
     value: '9864 Rosa Fels (B)',
     basic: 'B_Rosa_Fels_B',
@@ -27,3 +29,5 @@ export default [
     alt: '9864 Rosa Fels Botz',
   },
 ]
+
+export default mattGlazes

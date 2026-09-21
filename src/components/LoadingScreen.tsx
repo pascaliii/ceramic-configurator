@@ -1,19 +1,22 @@
 import { useProgress } from '@react-three/drei'
 import Button from './Button'
 
-export const LoadingScreen = ({ started, onStarted }) => {
+interface LoadingScreenProps {
+  started: boolean
+  onStarted: () => void
+}
+
+const LoadingScreen = ({ started, onStarted }: LoadingScreenProps) => {
   const { progress } = useProgress()
+  const isLoading = progress < 100
+
   return (
-    <div
-      className={`loading-screen ${started ? 'loading-screen--started' : ''}`}
-    >
+    <div className={`loading-screen ${started ? 'loading-screen--started' : ''}`}>
       <div className='loading-screen__wrapper'>
         <div className='loading-screen__progress'>
           <div
             className='loading-screen__progress-value'
-            style={{
-              width: `${progress}%`,
-            }}
+            style={{ width: `${progress}%` }}
           />
         </div>
         <div className='loading-screen__board'>
@@ -23,8 +26,8 @@ export const LoadingScreen = ({ started, onStarted }) => {
             This project is part of my master thesis in{' '}
             <strong>Digital Reality</strong> at{' '}
             <strong>University of Applied Sciences Hamburg</strong>. <br /> I
-            used my technological knowledge to optimize the process of my hobby pottery. 
-            This configurator helps me to decide which glazes would work with different shapes and on different clay types. 
+            used my technological knowledge to optimize the process of my hobby pottery.
+            This configurator helps me to decide which glazes would work with different shapes and on different clay types.
             I created PBR materials that are
             as close as possible to some ceramic glazes from Botz and Carl Jäger.
             <br />
@@ -38,9 +41,9 @@ export const LoadingScreen = ({ started, onStarted }) => {
             <br />
           </p>
           <Button
-            label={progress < 100 ? 'Loading...' : 'Start Configuration'}
-            disabled={progress < 100}
-            loading={progress < 100}
+            label={isLoading ? 'Loading...' : 'Start Configuration'}
+            disabled={isLoading}
+            loading={isLoading}
             onClick={onStarted}
           />
         </div>
@@ -48,4 +51,5 @@ export const LoadingScreen = ({ started, onStarted }) => {
     </div>
   )
 }
+
 export default LoadingScreen

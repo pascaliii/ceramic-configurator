@@ -1,7 +1,13 @@
 import cls from 'classnames'
+import type { ReactNode } from 'react'
 import ColorRadioItem from './ColorRadioItem'
 
-const ColorRadio = ({ children, utilClassNames, ...restProps }) => {
+interface ColorRadioProps {
+  children: ReactNode
+  utilClassNames?: string
+}
+
+const ColorRadio = ({ children, utilClassNames }: ColorRadioProps) => {
   const classNames = cls('color-radio', {
     [`${utilClassNames}`]: utilClassNames,
   })

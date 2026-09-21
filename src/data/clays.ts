@@ -1,4 +1,6 @@
-export default [
+import type { ClayItem } from '../types'
+
+const clays: ClayItem[] = [
   {
     _id: '1',
     name: 'clay',
@@ -28,3 +30,5 @@ export default [
     roughness: '/textures/clay_spreckled/Clay_Spreckled_Roughness.png',
   },
 ]
+
+export default clays

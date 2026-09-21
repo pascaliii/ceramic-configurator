@@ -1,10 +1,10 @@
-@import './styles/colors';
+@use './styles/colors';
 
-@import './styles/components/sidebar';
-@import './styles/components/color-radio';
-@import './styles/components/button';
-@import './styles/components/loading-screen';
-@import './styles/components/selection';
+@use './styles/components/sidebar';
+@use './styles/components/color-radio';
+@use './styles/components/button';
+@use './styles/components/loading-screen';
+@use './styles/components/selection';
 
 
 :root {
