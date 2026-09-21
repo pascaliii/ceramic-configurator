@@ -18,6 +18,10 @@
     "react-dom": "^18.3.1",
     "three": "^0.176.0"
   },
+  "engines": {
+    "node": ">=24.0.0",
+    "yarn": ">=1.22.0"
+  },
   "devDependencies": {
     "@types/react": "^18.3.23",
     "@types/react-dom": "^18.3.7",
